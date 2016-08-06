@@ -93,8 +93,22 @@
                     <view key="view" contentMode="scaleToFill" id="ebN-zR-GwV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7rS-Ub-Jho">
+                                <rect key="frame" x="0.0" y="28" width="600" height="572"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7rS-Ub-Jho" firstAttribute="top" secondItem="1Tg-iV-8Ah" secondAttribute="bottom" constant="8" symbolic="YES" id="09v-p0-FYC"/>
+                            <constraint firstItem="7rS-Ub-Jho" firstAttribute="bottom" secondItem="pSu-KE-0So" secondAttribute="top" id="7m4-tC-lRD"/>
+                            <constraint firstAttribute="trailing" secondItem="7rS-Ub-Jho" secondAttribute="trailing" id="Psa-aT-ObG"/>
+                            <constraint firstItem="7rS-Ub-Jho" firstAttribute="leading" secondItem="ebN-zR-GwV" secondAttribute="leading" id="uPa-4Y-rpl"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="7rS-Ub-Jho" id="f5d-ph-TeL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY2-Ml-HAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
