@@ -62,10 +62,10 @@ class PublicProfileViewController: FormViewController  {
         let headerRow = CustomRowFormer<ProfileHeaderCell>(instantiateType: .Nib(nibName: "ProfileHeaderCell")) {
             $0.iconView.backgroundColor = SAP_COLOR
             $0.backgroundLabel.backgroundColor = SAP_COLOR
-            $0.nameLabel.text = Profile.sharedInstance.user![PF_USER_FULLNAME] as? String
-            $0.schoolLabel.text = Profile.sharedInstance.user![PF_USER_OFFICE] as? String
-            $0.titleLabel.text = Profile.sharedInstance.user![PF_USER_TITLE] as? String
-            let userImageFile = Profile.sharedInstance.user![PF_USER_PICTURE] as? PFFile
+            $0.nameLabel.text = self.user![PF_USER_FULLNAME] as? String
+            $0.schoolLabel.text = self.user![PF_USER_OFFICE] as? String
+            $0.titleLabel.text = self.user![PF_USER_TITLE] as? String
+            let userImageFile = self.user![PF_USER_PICTURE] as? PFFile
             if userImageFile != nil {
                 do {
                     let imageData = try userImageFile!.getData()
@@ -85,7 +85,7 @@ class PublicProfileViewController: FormViewController  {
         let phoneRow = CustomRowFormer<ProfileLabelCell>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
             $0.titleLabel.text = "Phone"
             $0.titleLabel.textColor = SAP_COLOR
-            $0.displayLabel.text = Profile.sharedInstance.user![PF_USER_PHONE] as? String
+            $0.displayLabel.text = self.user![PF_USER_PHONE] as? String
             }.onSelected { _ in
                 self.former.deselect(true)
                 
@@ -93,13 +93,13 @@ class PublicProfileViewController: FormViewController  {
         let emailRow = CustomRowFormer<ProfileLabelCell>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
             $0.titleLabel.text = "Email"
             $0.titleLabel.textColor = SAP_COLOR
-            $0.displayLabel.text = Profile.sharedInstance.user![PF_USER_EMAIL] as? String
+            $0.displayLabel.text = self.user![PF_USER_EMAIL] as? String
             }.onSelected { _ in
                 self.former.deselect(true)
         }
         let infoRow = CustomRowFormer<DynamicHeightCell>(instantiateType: .Nib(nibName: "DynamicHeightCell")) {
             $0.title = "About Me"
-            $0.body = Profile.sharedInstance.user![PF_USER_INFO] as? String
+            $0.body = self.user![PF_USER_INFO] as? String
             $0.titleLabel.font = .boldSystemFontOfSize(15)
             $0.titleLabel.textColor = SAP_COLOR
             $0.bodyLabel.font = .systemFontOfSize(15)

@@ -27,7 +27,7 @@ class MessagesCell: UITableViewCell {
         
         let id = message[PF_MESSAGES_GROUPID] as? String
         
-        
+        /*
         if id?.characters.count > 10 {
             let lastUser = message[PF_MESSAGES_LASTUSER] as? PFUser
             if lastUser != PFUser.currentUser()! {
@@ -35,7 +35,7 @@ class MessagesCell: UITableViewCell {
                 userImage.loadInBackground()
             }
         }
-         
+        */
         
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
         lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
