@@ -48,7 +48,7 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
         if outgoingColor != nil {
            outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(outgoingColor!)
         } else {
-            outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(WESST_COLOR)
+            outgoingBubbleImage = bubbleFactory.outgoingMessagesBubbleImageWithColor(SAP_COLOR)
         }
         incomingBubbleImage = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
         
@@ -244,7 +244,7 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let user = self.users[indexPath.item]
         if self.avatars[user.objectId!] == nil {
-            let thumbnailFile = user[PF_USER_THUMBNAIL] as? PFFile
+            let thumbnailFile = user[PF_USER_PICTURE] as? PFFile
             thumbnailFile?.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     self.avatars[user.objectId!] = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(data: imageData!), diameter: 30)
@@ -340,12 +340,7 @@ class ChatViewController: JSQMessagesViewController, UIActionSheetDelegate, UIIm
     override func collectionView(collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, atIndexPath indexPath: NSIndexPath!) {
         print("didTapAvatarImageview")
         
-        let profileVC = NewProfileViewController()
-        if School.sharedInstance.color == nil {
-            profileVC.color = WESST_COLOR
-        } else {
-            profileVC.color = School.sharedInstance.color!
-        }
+        let profileVC = PublicProfileViewController()
         profileVC.user = users[indexPath.row]
         self.navigationController?.pushViewController(profileVC, animated: true)
     }

@@ -18,17 +18,11 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.contentInset.bottom = 30
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.cleanup), name: NOTIFICATION_USER_LOGGED_OUT, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.loadMessages), name: "reloadMessages", object: nil)
-        
-        let groupButton = UIBarButtonItem(image: UIImage(named: "Conference"), style: .Plain, target: self, action: #selector(showGroups))
-        let newButton = UIBarButtonItem(image: UIImage(named: "Compose"), style: .Plain, target: self, action: #selector(compose))
-        
-        navigationItem.rightBarButtonItems = [newButton, groupButton]
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl!.addTarget(self, action: #selector(MessagesViewController.loadMessages), forControlEvents: UIControlEvents.ValueChanged)
@@ -39,17 +33,12 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        School.sharedInstance.color = WESST_COLOR
         
         if PFUser.currentUser() != nil {
             self.loadMessages()
         } else {
             Utilities.loginUser(self)
         }
-    }
-    
-    func showGroups(sender: AnyObject?) {
-        self.performSegueWithIdentifier("showGroups", sender: self)
     }
     
     
@@ -104,7 +93,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
         self.updateEmptyView()
     }
     
-    @IBAction func compose(sender: UIBarButtonItem) {
+    @IBAction func compose(sender: AnyObject?) {
         //Create the AlertController
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         

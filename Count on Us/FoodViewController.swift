@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FoodMapViewController: UIViewController {
+class FoodViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

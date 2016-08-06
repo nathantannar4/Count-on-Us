@@ -11,7 +11,7 @@ import UIKit
 extension UIColor {
     
     class func formerColor() -> UIColor {
-        return WESST_COLOR
+        return SAP_COLOR
     }
     
     class func formerSubColor() -> UIColor {

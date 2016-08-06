@@ -9,10 +9,13 @@ import UIKit
 
 enum LeftMenu: Int {
     case Main = 0
-    case Swift
-    case Java
-    case Go
-    case NonMenu
+    case Profile
+    case Food
+    case Services
+    case Goods
+    case Messages
+    case Colleagues
+    case Schedule
 }
 
 protocol LeftMenuProtocol : class {
@@ -22,13 +25,15 @@ protocol LeftMenuProtocol : class {
 class LeftViewController : UIViewController, LeftMenuProtocol {
     
     @IBOutlet weak var tableView: UITableView!
-    var menus = ["Main", "Swift", "Java", "Go", "NonMenu"]
+    var menus = ["Home", "Profile", "Food", "Services", "Goods", "Messages", "Colleagues", "Schedule"]
     var mainViewController: UIViewController!
-    var swiftViewController: UIViewController!
-    var javaViewController: UIViewController!
-    var goViewController: UIViewController!
-    var nonMenuViewController: UIViewController!
-    var imageHeaderView: ImageHeaderView!
+    var profileViewController: UIViewController!
+    var foodViewController: UIViewController!
+    var servicesViewController: UIViewController!
+    var goodsViewController: UIViewController!
+    var messagesViewController: UIViewController!
+    var colleaguesViewController: UIViewController!
+    var scheduleViewController: UIViewController!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,50 +41,57 @@ class LeftViewController : UIViewController, LeftMenuProtocol {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.separatorColor = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1.0)
+        self.tableView.separatorColor = SAP_COLOR
+        self.tableView.separatorStyle = .None
+        self.tableView.scrollEnabled = false
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let swiftViewController = storyboard.instantiateViewControllerWithIdentifier("SwiftViewController") as! SwiftViewController
-        self.swiftViewController = UINavigationController(rootViewController: swiftViewController)
+        let profileViewController = storyboard.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+        self.profileViewController = UINavigationController(rootViewController: profileViewController)
         
-        let javaViewController = storyboard.instantiateViewControllerWithIdentifier("JavaViewController") as! JavaViewController
-        self.javaViewController = UINavigationController(rootViewController: javaViewController)
+        let foodViewController = storyboard.instantiateViewControllerWithIdentifier("FoodViewController") as! FoodViewController
+        self.foodViewController = UINavigationController(rootViewController: foodViewController)
         
-        let goViewController = storyboard.instantiateViewControllerWithIdentifier("GoViewController") as! GoViewController
-        self.goViewController = UINavigationController(rootViewController: goViewController)
+        let servicesViewController = storyboard.instantiateViewControllerWithIdentifier("ServicesViewController") as! ServicesViewController
+        self.servicesViewController = UINavigationController(rootViewController: servicesViewController)
         
-        let nonMenuController = storyboard.instantiateViewControllerWithIdentifier("NonMenuController") as! NonMenuController
-        nonMenuController.delegate = self
-        self.nonMenuViewController = UINavigationController(rootViewController: nonMenuController)
+        let goodsViewController = storyboard.instantiateViewControllerWithIdentifier("GoodsViewController") as! GoodsViewController
+        self.goodsViewController = UINavigationController(rootViewController: goodsViewController)
+        
+        let messagesViewController = storyboard.instantiateViewControllerWithIdentifier("MessagesViewController") as! MessagesViewController
+        self.messagesViewController = UINavigationController(rootViewController: messagesViewController)
+        
+        let colleaguesViewController = storyboard.instantiateViewControllerWithIdentifier("ColleaguesViewController") as! ColleaguesViewController
+        self.colleaguesViewController = UINavigationController(rootViewController: colleaguesViewController)
+        
+        let scheduleViewController = storyboard.instantiateViewControllerWithIdentifier("ScheduleViewController") as! ScheduleViewController
+        self.scheduleViewController = UINavigationController(rootViewController: scheduleViewController)
         
         self.tableView.registerCellClass(BaseTableViewCell.self)
-        
-        self.imageHeaderView = ImageHeaderView.loadNib()
-        self.view.addSubview(self.imageHeaderView)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.imageHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 160)
-        self.view.layoutIfNeeded()
-    }
-    
     func changeViewController(menu: LeftMenu) {
         switch menu {
         case .Main:
             self.slideMenuController()?.changeMainViewController(self.mainViewController, close: true)
-        case .Swift:
-            self.slideMenuController()?.changeMainViewController(self.swiftViewController, close: true)
-        case .Java:
-            self.slideMenuController()?.changeMainViewController(self.javaViewController, close: true)
-        case .Go:
-            self.slideMenuController()?.changeMainViewController(self.goViewController, close: true)
-        case .NonMenu:
-            self.slideMenuController()?.changeMainViewController(self.nonMenuViewController, close: true)
+        case .Profile:
+            self.slideMenuController()?.changeMainViewController(self.profileViewController, close: true)
+        case .Food:
+            self.slideMenuController()?.changeMainViewController(self.foodViewController, close: true)
+        case .Services:
+            self.slideMenuController()?.changeMainViewController(self.servicesViewController, close: true)
+        case .Goods:
+            self.slideMenuController()?.changeMainViewController(self.goodsViewController, close: true)
+        case .Messages:
+            self.slideMenuController()?.changeMainViewController(self.messagesViewController, close: true)
+        case .Colleagues:
+            self.slideMenuController()?.changeMainViewController(self.colleaguesViewController, close: true)
+        case .Schedule:
+            self.slideMenuController()?.changeMainViewController(self.scheduleViewController, close: true)
         }
     }
 }
@@ -88,7 +100,7 @@ extension LeftViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
-            case .Main, .Swift, .Java, .Go, .NonMenu:
+            case .Main, .Profile, .Food, .Services, .Goods, .Messages, .Colleagues, .Schedule:
                 return BaseTableViewCell.height()
             }
         }
@@ -106,7 +118,7 @@ extension LeftViewController : UITableViewDataSource {
         
         if let menu = LeftMenu(rawValue: indexPath.item) {
             switch menu {
-            case .Main, .Swift, .Java, .Go, .NonMenu:
+            case .Main, .Profile, .Food, .Services, .Goods, .Messages, .Colleagues, .Schedule:
                 let cell = BaseTableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: BaseTableViewCell.identifier)
                 cell.setData(menus[indexPath.row])
                 return cell

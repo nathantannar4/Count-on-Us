@@ -66,7 +66,7 @@ final class LoginViewController: FormViewController {
                 // Load user into local data and dismiss login view controller
                 PushNotication.parsePushUserAssign()
                 Profile.sharedInstance.loadUser()
-                self.dismissViewControllerAnimated(true, completion: { let banner = Banner(title: "Welcome Back!", subtitle: "\(PFUser.currentUser()!.valueForKey(PF_USER_FULLNAME)!)", image: UIImage(named: "Icon"), backgroundColor: WESST_COLOR)
+                self.dismissViewControllerAnimated(true, completion: { let banner = Banner(title: "Welcome Back!", subtitle: "\(PFUser.currentUser()!.valueForKey(PF_USER_FULLNAME)!)", image: UIImage(named: "Icon"), backgroundColor: SAP_COLOR)
                     banner.dismissesOnTap = true
                     banner.show(duration: 1.0) })
                 

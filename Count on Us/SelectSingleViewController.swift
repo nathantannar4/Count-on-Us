@@ -43,7 +43,7 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     
     func loadUsers() {
         let query = PFQuery(className: PF_USER_CLASS_NAME)
-        //query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: PFUser.currentUser()!.objectId!)
 
         query.orderByAscending(PF_USER_FULLNAME)
         query.limit = 1000
@@ -69,7 +69,7 @@ class SelectSingleViewController: UITableViewController, UISearchBarDelegate {
     
     func searchUsers(searchLower: String) {
         let query = PFQuery(className: PF_USER_CLASS_NAME)
-        //query.whereKey(PF_USER_OBJECTID, notEqualTo: user!.objectId!)
+        query.whereKey(PF_USER_OBJECTID, notEqualTo: PFUser.currentUser()!.objectId!)
         query.whereKey(PF_USER_FULLNAME_LOWER, containsString: searchLower)
         query.orderByAscending(PF_USER_FULLNAME)
         query.findObjectsInBackgroundWithBlock {

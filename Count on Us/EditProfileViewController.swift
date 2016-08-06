@@ -76,15 +76,14 @@ final class EditProfileViewController: FormViewController {
         let locationRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
             $0.titleLabel.text = "School"
             }.configure {
-                let schools = ["University of Victoria", "UBC Vancouver", "UBC Okanagan", "SFU Burnaby", "SFU Surrey", "BCIT", "UNBC", "University of Calgary", "University of Alberta", "University of Saskatchewan", "University of Regina", "University of Manitoba"]
-                $0.pickerItems = schools.map {
+                $0.pickerItems = OFFICES.map {
                     InlinePickerItem(title: $0)
                 }
-                if let school = Profile.sharedInstance.school {
-                    $0.selectedRow = schools.indexOf(school) ?? 0
+                if let office = Profile.sharedInstance.office {
+                    $0.selectedRow = OFFICES.indexOf(office) ?? 0
                 }
             }.onValueChanged {
-                Profile.sharedInstance.school = $0.title
+                Profile.sharedInstance.office = $0.title
         }
         let phoneRow = TextFieldRowFormer<ProfileFieldCell>(instantiateType: .Nib(nibName: "ProfileFieldCell")) { [weak self] in
             $0.titleLabel.text = "Phone"
@@ -105,52 +104,6 @@ final class EditProfileViewController: FormViewController {
             }.onTextChanged {
                 Profile.sharedInstance.job = $0
         }
-        let genderRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Gender"
-            }.configure {
-                let genders = ["Male", "Female", "Neither", "Undefined"]
-                $0.pickerItems = genders.map {
-                    InlinePickerItem(title: $0)
-                }
-                if let gender = Profile.sharedInstance.gender {
-                    $0.selectedRow = genders.indexOf(gender) ?? 0
-                }
-            }.onValueChanged {
-                Profile.sharedInstance.gender = $0.title
-        }
-        let yearRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Year"
-            }.configure {
-                let years = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th"]
-                $0.pickerItems = years.map {
-                    InlinePickerItem(title: $0)
-                }
-                if let year = Profile.sharedInstance.year {
-                    $0.selectedRow = years.indexOf(year) ?? 0
-                }
-            }.onValueChanged {
-                Profile.sharedInstance.year = $0.title
-        }
-        let optionRow = TextFieldRowFormer<ProfileFieldCell>(instantiateType: .Nib(nibName: "ProfileFieldCell")) { [weak self] in
-            $0.titleLabel.text = "Discipline"
-            $0.textField.inputAccessoryView = self?.formerInputAccessoryView
-            }.configure {
-                $0.placeholder = "Engineering Option"
-                $0.text = Profile.sharedInstance.option
-            }.onTextChanged {
-                Profile.sharedInstance.option = $0
-        }
-        let birthdayRow = InlineDatePickerRowFormer<ProfileLabelCell>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Birthday"
-            }.configure {
-                $0.date = Profile.sharedInstance.birthDay ?? NSDate()
-            }.inlineCellSetup {
-                $0.datePicker.datePickerMode = .Date
-            }.displayTextFromDate {
-                return String.mediumDateNoTime($0)
-            }.onDateChanged {
-                Profile.sharedInstance.birthDay = $0
-        }
         let introductionRow = TextViewRowFormer<FormTextViewCell>() { [weak self] in
             $0.textView.textColor = .formerSubColor()
             $0.textView.font = .systemFontOfSize(15)
@@ -163,39 +116,18 @@ final class EditProfileViewController: FormViewController {
                 Profile.sharedInstance.introduction = $0
         }
         
-        
-        
-        let createHeader: (String -> ViewFormer) = { text in
-            return LabelViewFormer<FormLabelHeaderView>()
-                .configure {
-                    $0.viewHeight = 40
-                    $0.text = text
-            }
-        }
-        
-        let createFooter: (String -> ViewFormer) = { text in
-            return LabelViewFormer<FormLabelFooterView>()
-                .configure {
-                    $0.text = text
-                    $0.viewHeight = 40
-            }
-        }
-        
         // Create SectionFormers
         
-        let imageSection = SectionFormer(rowFormer: onlyImageRow, imageRow).set(headerViewFormer: createHeader("Profile Image"))
+        let imageSection = SectionFormer(rowFormer: onlyImageRow, imageRow).set(headerViewFormer: Utilities.createHeader("Profile Image"))
         
-        let introductionSection = SectionFormer(rowFormer: introductionRow).set(headerViewFormer: createHeader("Introduction"))
+        let introductionSection = SectionFormer(rowFormer: introductionRow).set(headerViewFormer: Utilities.createHeader("Introduction"))
         
-        let aboutSection = SectionFormer(rowFormer: nameRow, locationRow, jobRow, yearRow, optionRow, phoneRow, genderRow, birthdayRow).set(headerViewFormer: createHeader("About")).set(footerViewFormer: createFooter(""))
+        let aboutSection = SectionFormer(rowFormer: nameRow, locationRow, jobRow, phoneRow).set(headerViewFormer: Utilities.createHeader("About")).set(footerViewFormer: Utilities.createFooter(""))
         
         former.append(sectionFormer: imageSection, introductionSection, aboutSection)
             .onCellSelected { [weak self] _ in
                 self?.formerInputAccessoryView.update()
         }
-        // Profile.sharedInstance.moreInformation {
-         //   former.append(sectionFormer: informationSection)
-        //}
     }
     
     private func presentImagePicker() {
@@ -235,32 +167,17 @@ extension EditProfileViewController: UIImagePickerControllerDelegate, UINavigati
             }
         }
         
-        
-        if image.size.width > 60 {
-            let resizeFactor = 60 / image.size.width
-            
-            imageToBeSaved = Images.resizeImage(image, width: resizeFactor * image.size.width, height: resizeFactor * image.size.height)!
-        }
-        
-        let thumbnailFile = PFFile(name: "thumbnail.jpg", data: UIImageJPEGRepresentation(imageToBeSaved, 0.6)!)
-        thumbnailFile!.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
-            if error != nil {
-                print("Network error")
-            }
-        }
-        
         let user = PFUser.currentUser()!
         user[PF_USER_PICTURE] = pictureFile
-        user[PF_USER_THUMBNAIL] = thumbnailFile
         user.saveInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error != nil {
                 print("Network error")
-                let banner = Banner(title: "Network Error", subtitle: "Image could not be saved", image: UIImage(named: "Icon"), backgroundColor: WESST_COLOR)
+                let banner = Banner(title: "Network Error", subtitle: "Image could not be saved", image: UIImage(named: "Icon"), backgroundColor: SAP_COLOR)
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.0)
             }
             else {
-                let banner = Banner(title: "Image Saved", subtitle: nil, image: UIImage(named: "Icon"), backgroundColor: WESST_COLOR)
+                let banner = Banner(title: "Image Saved", subtitle: nil, image: UIImage(named: "Icon"), backgroundColor: SAP_COLOR)
                 banner.dismissesOnTap = true
                 banner.show(duration: 1.0)
             }

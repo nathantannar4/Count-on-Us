@@ -50,7 +50,7 @@ final class RegisterViewController: FormViewController {
         else if Profile.sharedInstance.email!.characters.count == 0 {
             displayAlert("", message: "You must enter an email")
         }
-        else if allSchools.contains(Profile.sharedInstance.school!) == false {
+        else if OFFICES.contains(Profile.sharedInstance.office!) == false {
             displayAlert("", message: "You must choose your school")
         } else {
             
@@ -76,20 +76,15 @@ final class RegisterViewController: FormViewController {
         user.password = Profile.sharedInstance.password!
         user.email = Profile.sharedInstance.email!
         user[PF_USER_FULLNAME] = Profile.sharedInstance.name!
-        user[PF_USER_GENDER] = Profile.sharedInstance.gender
         user[PF_USER_INFO] = ""
-        user[PF_USER_BIRTHDAY] = Profile.sharedInstance.birthDay!
-        user[PF_USER_SCHOOL] = Profile.sharedInstance.school!
+        user[PF_USER_OFFICE] = Profile.sharedInstance.office!
         user[PF_USER_PHONE] = Profile.sharedInstance.phoneNumber!
-        user[PF_USER_MASTER] = false
-        user["walkthrough"] = true
-        user["admin"] = []
         user.signUpInBackgroundWithBlock { (succeeded: Bool, error: NSError?) -> Void in
             if error == nil {
                 PushNotication.parsePushUserAssign()
                 Profile.sharedInstance.loadUser()
                 print("Succeeded.")
-                self.dismissViewControllerAnimated(true, completion: { let banner = Banner(title: "Welcome", subtitle: "\(PFUser.currentUser()!.valueForKey(PF_USER_FULLNAME)!)", image: UIImage(named: "Icon"), backgroundColor: WESST_COLOR)
+                self.dismissViewControllerAnimated(true, completion: { let banner = Banner(title: "Welcome", subtitle: "\(PFUser.currentUser()!.valueForKey(PF_USER_FULLNAME)!)", image: UIImage(named: "Icon"), backgroundColor: SAP_COLOR)
                     banner.dismissesOnTap = true
                     banner.show(duration: 1.0) })
             } else {
@@ -142,15 +137,14 @@ final class RegisterViewController: FormViewController {
         let locationRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
             $0.titleLabel.text = "School"
             }.configure {
-                let schools = allSchools
-                $0.pickerItems = schools.map {
+                $0.pickerItems = OFFICES.map {
                     InlinePickerItem(title: $0)
                 }
-                if let school = Profile.sharedInstance.school {
-                    $0.selectedRow = schools.indexOf(school) ?? 0
+                if let office = Profile.sharedInstance.office {
+                    $0.selectedRow = OFFICES.indexOf(office) ?? 0
                 }
             }.onValueChanged {
-                Profile.sharedInstance.school = $0.title
+                Profile.sharedInstance.office = $0.title
         }
         let phoneRow = TextFieldRowFormer<ProfileFieldCell>(instantiateType: .Nib(nibName: "ProfileFieldCell")) { [weak self] in
             $0.titleLabel.text = "Phone"
@@ -171,58 +165,11 @@ final class RegisterViewController: FormViewController {
             }.onTextChanged {
                 Profile.sharedInstance.job = $0
         }
-        let genderRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Gender"
-            }.configure {
-                let genders = ["Male", "Female", "Neither", "Undefined"]
-                $0.pickerItems = genders.map {
-                    InlinePickerItem(title: $0)
-                }
-                if let gender = Profile.sharedInstance.gender {
-                    $0.selectedRow = genders.indexOf(gender) ?? 0
-                }
-            }.onValueChanged {
-                Profile.sharedInstance.gender = $0.title
-        }
-        let yearRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Year"
-            }.configure {
-                let years = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th"]
-                $0.pickerItems = years.map {
-                    InlinePickerItem(title: $0)
-                }
-                if let year = Profile.sharedInstance.year {
-                    $0.selectedRow = years.indexOf(year) ?? 0
-                }
-            }.onValueChanged {
-                Profile.sharedInstance.year = $0.title
-        }
-        let optionRow = TextFieldRowFormer<ProfileFieldCell>(instantiateType: .Nib(nibName: "ProfileFieldCell")) { [weak self] in
-            $0.titleLabel.text = "Discipline"
-            $0.textField.inputAccessoryView = self?.formerInputAccessoryView
-            }.configure {
-                $0.placeholder = "Engineering Option"
-                $0.text = Profile.sharedInstance.option
-            }.onTextChanged {
-                Profile.sharedInstance.option = $0
-        }
-        let birthdayRow = InlineDatePickerRowFormer<ProfileLabelCell>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "Birthday"
-            }.configure {
-                $0.date = Profile.sharedInstance.birthDay ?? NSDate()
-            }.inlineCellSetup {
-                $0.datePicker.datePickerMode = .Date
-            }.displayTextFromDate {
-                return String.mediumDateNoTime($0)
-            }.onDateChanged {
-                Profile.sharedInstance.birthDay = $0
-        }
-        
-        // Create SectionFormers
+                // Create SectionFormers
         
         let requiredSection = SectionFormer(rowFormer: emailRow, passwordRow, verifyRow, nameRow, locationRow).set(headerViewFormer: Utilities.createHeader("Required Details"))
             
-        let optionalSection = SectionFormer(rowFormer: jobRow, yearRow, optionRow, phoneRow, genderRow, birthdayRow).set(headerViewFormer: Utilities.createHeader("Optional Details"))
+        let optionalSection = SectionFormer(rowFormer: jobRow, phoneRow).set(headerViewFormer: Utilities.createHeader("Optional Details"))
         
         
         former.append(sectionFormer: requiredSection, optionalSection)

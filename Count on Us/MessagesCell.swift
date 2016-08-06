@@ -22,7 +22,7 @@ class MessagesCell: UITableViewCell {
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.layer.masksToBounds = true
         userImage.layer.borderWidth = 2
-        userImage.layer.borderColor = WESST_COLOR.CGColor
+        userImage.layer.borderColor = SAP_COLOR.CGColor
         
         
         let id = message[PF_MESSAGES_GROUPID] as? String

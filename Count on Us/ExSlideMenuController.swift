@@ -13,33 +13,16 @@ class ExSlideMenuController : SlideMenuController {
     override func isTagetViewController() -> Bool {
         if let vc = UIApplication.topViewController() {
             if vc is MainViewController ||
-            vc is SwiftViewController ||
-            vc is JavaViewController ||
-            vc is GoViewController {
+            vc is ProfileViewController ||
+            vc is FoodViewController ||
+            vc is ServicesViewController ||
+            vc is GoodsViewController ||
+            vc is ColleaguesViewController ||
+            vc is ScheduleViewController ||
+            vc is MessagesViewController {
                 return true
             }
         }
         return false
-    }
-    
-    override func track(trackAction: TrackAction) {
-        switch trackAction {
-        case .LeftTapOpen:
-            print("TrackAction: left tap open.")
-        case .LeftTapClose:
-            print("TrackAction: left tap close.")
-        case .LeftFlickOpen:
-            print("TrackAction: left flick open.")
-        case .LeftFlickClose:
-            print("TrackAction: left flick close.")
-        case .RightTapOpen:
-            print("TrackAction: right tap open.")
-        case .RightTapClose:
-            print("TrackAction: right tap close.")
-        case .RightFlickOpen:
-            print("TrackAction: right flick open.")
-        case .RightFlickClose:
-            print("TrackAction: right flick close.")
-        }   
     }
 }
