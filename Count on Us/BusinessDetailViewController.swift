@@ -26,6 +26,8 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Invite", style: .Plain, target: self, action: #selector(inviteButtonPressed))
         
         configure()
+        
+        
     }
     
     func inviteButtonPressed(sender: AnyObject?) {
@@ -169,13 +171,30 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
                 nav.navigationBar.barTintColor = SAP_COLOR
                 self!.presentViewController(nav, animated: true, completion: nil)
         }
-
+        let statRow = createMenu("View Statistics") { [weak self] in
+            self?.former.deselect(true)
+            let statVC = StatsViewController()
+            statVC.business = self!.business
+            self!.navigationController?.pushViewController(statVC, animated: true)
+        }
         
         
-        self.former.append(sectionFormer: SectionFormer(rowFormer: mapRow, nameRow, infoRow, whenOffered, phoneRow, urlRow, reviewRow))
+        self.former.append(sectionFormer: SectionFormer(rowFormer: mapRow, nameRow, infoRow, whenOffered, phoneRow, urlRow, reviewRow, statRow))
         self.former.reload()
         
         
+    }
+    
+    let createMenu: ((String, (() -> Void)?) -> RowFormer) = { text, onSelected in
+        return LabelRowFormer<FormLabelCell>() {
+            $0.titleLabel.textColor = SAP_COLOR
+            $0.titleLabel.font = .boldSystemFontOfSize(16)
+            $0.accessoryType = .DisclosureIndicator
+            }.configure {
+                $0.text = text
+            }.onSelected { _ in
+                onSelected?()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

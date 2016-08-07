@@ -19,6 +19,34 @@ class MainViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let query = PFQuery(className: "Food")
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
+            if error == nil {
+                for object in objects! {
+    
+                    var dayStats = [NSDate]()
+                    var dayStatsCount = [CGFloat]()
+                    for date in 1...30 {
+                        dayStats.append(NSDate().dateBySubtractingDays(date))
+                        dayStatsCount.append(CGFloat(Int(arc4random_uniform(50))))
+                    }
+                    object["dayStats"] = dayStats
+                    object["dayStatsCount"] = dayStatsCount
+                    object.saveInBackgroundWithBlock({ (sucess: Bool, error: NSError?) in
+                        if error != nil {
+                            print(error)
+                        }
+                    })
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
         // Configure Navbar
         title = "Home"
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
@@ -52,7 +80,7 @@ class MainViewController: FormViewController {
         LabelRowFormer<ImageCell>(instantiateType: .Nib(nibName: "ImageCell")) {
             $0.displayImage.image = UIImage(named: "SAP_Logo.png")
             }.configure {
-                $0.rowHeight = 200
+                $0.rowHeight = 175
             }
             .onSelected({ (cell: LabelRowFormer<ImageCell>) in
                 self.former.deselect(true)

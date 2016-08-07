@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2B26B9021D571281004EC575 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B26B9011D571281004EC575 /* ListViewController.swift */; };
+		2F02A8FF1D5781CF00B2B2A4 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A8FE1D5781CE00B2B2A4 /* StatsViewController.swift */; };
+		2F02A9131D578B7B00B2B2A4 /* PNChartConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A90F1D578B7B00B2B2A4 /* PNChartConfig.swift */; };
+		2F02A9141D578B7B00B2B2A4 /* PNChartDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A9101D578B7B00B2B2A4 /* PNChartDelegate.swift */; };
+		2F02A9151D578B7B00B2B2A4 /* PNValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A9111D578B7B00B2B2A4 /* PNValue.swift */; };
+		2F02A9161D578B7B00B2B2A4 /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A9121D578B7B00B2B2A4 /* view.swift */; };
+		2F02A91C1D578BA100B2B2A4 /* PNChartLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A9191D578BA100B2B2A4 /* PNChartLabel.swift */; };
+		2F02A91D1D578BA100B2B2A4 /* PNLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A91A1D578BA100B2B2A4 /* PNLineChart.swift */; };
+		2F02A91E1D578BA100B2B2A4 /* PNLineChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A91B1D578BA100B2B2A4 /* PNLineChartData.swift */; };
+		2F02A9211D578BB300B2B2A4 /* PNBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A91F1D578BB300B2B2A4 /* PNBar.swift */; };
+		2F02A9221D578BB300B2B2A4 /* PNBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F02A9201D578BB300B2B2A4 /* PNBarChart.swift */; };
 		2FE4A8111D56607A001ECAD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8101D56607A001ECAD8 /* AppDelegate.swift */; };
 		2FE4A81D1D56607A001ECAD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A81B1D56607A001ECAD8 /* LaunchScreen.storyboard */; };
 		2FE4A83F1D56675D001ECAD8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8371D56675D001ECAD8 /* String.swift */; };
@@ -101,6 +111,16 @@
 
 /* Begin PBXFileReference section */
 		2B26B9011D571281004EC575 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		2F02A8FE1D5781CE00B2B2A4 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		2F02A90F1D578B7B00B2B2A4 /* PNChartConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNChartConfig.swift; path = PNChartSwift/PNChartConfig.swift; sourceTree = "<group>"; };
+		2F02A9101D578B7B00B2B2A4 /* PNChartDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNChartDelegate.swift; path = PNChartSwift/PNChartDelegate.swift; sourceTree = "<group>"; };
+		2F02A9111D578B7B00B2B2A4 /* PNValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNValue.swift; path = PNChartSwift/PNValue.swift; sourceTree = "<group>"; };
+		2F02A9121D578B7B00B2B2A4 /* view.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = view.swift; path = PNChartSwift/view.swift; sourceTree = "<group>"; };
+		2F02A9191D578BA100B2B2A4 /* PNChartLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNChartLabel.swift; path = PNChartSwift/PNLineChart/PNChartLabel.swift; sourceTree = "<group>"; };
+		2F02A91A1D578BA100B2B2A4 /* PNLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNLineChart.swift; path = PNChartSwift/PNLineChart/PNLineChart.swift; sourceTree = "<group>"; };
+		2F02A91B1D578BA100B2B2A4 /* PNLineChartData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNLineChartData.swift; path = PNChartSwift/PNLineChart/PNLineChartData.swift; sourceTree = "<group>"; };
+		2F02A91F1D578BB300B2B2A4 /* PNBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNBar.swift; path = PNChartSwift/PNBarChart/PNBar.swift; sourceTree = "<group>"; };
+		2F02A9201D578BB300B2B2A4 /* PNBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PNBarChart.swift; path = PNChartSwift/PNBarChart/PNBarChart.swift; sourceTree = "<group>"; };
 		2FE4A80D1D56607A001ECAD8 /* Count on Us.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Count on Us.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE4A8101D56607A001ECAD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2FE4A81C1D56607A001ECAD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -219,6 +239,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2F02A8FD1D57818300B2B2A4 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				2FE4A90A1D5766F1001ECAD8 /* EventDetailViewController.swift */,
+				2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */,
+				2FE4A9021D570350001ECAD8 /* Event.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		2F02A90E1D5789FC00B2B2A4 /* PNChartSwift */ = {
+			isa = PBXGroup;
+			children = (
+				2F02A9191D578BA100B2B2A4 /* PNChartLabel.swift */,
+				2F02A91A1D578BA100B2B2A4 /* PNLineChart.swift */,
+				2F02A91F1D578BB300B2B2A4 /* PNBar.swift */,
+				2F02A9201D578BB300B2B2A4 /* PNBarChart.swift */,
+				2F02A91B1D578BA100B2B2A4 /* PNLineChartData.swift */,
+				2F02A90F1D578B7B00B2B2A4 /* PNChartConfig.swift */,
+				2F02A9101D578B7B00B2B2A4 /* PNChartDelegate.swift */,
+				2F02A9111D578B7B00B2B2A4 /* PNValue.swift */,
+				2F02A9121D578B7B00B2B2A4 /* view.swift */,
+			);
+			name = PNChartSwift;
+			sourceTree = "<group>";
+		};
 		2FE4A8041D56607A001ECAD8 = {
 			isa = PBXGroup;
 			children = (
@@ -249,16 +295,13 @@
 				2FE4A8D21D56831C001ECAD8 /* RegisterViewController.swift */,
 				2FE4A86D1D5678C3001ECAD8 /* Menu View */,
 				2FE4A8481D566B21001ECAD8 /* MainViewController.swift */,
-				2FE4A86E1D567989001ECAD8 /* FoodViewController.swift */,
 				2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */,
-				2FE4A90C1D5766FE001ECAD8 /* HeaderCell.swift */,
-				2FE4A90D1D5766FE001ECAD8 /* HeaderCell.xib */,
-				2FE4A90A1D5766F1001ECAD8 /* EventDetailViewController.swift */,
-				2B26B9011D571281004EC575 /* ListViewController.swift */,
-				2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */,
-				2FE4A9021D570350001ECAD8 /* Event.swift */,
+				2F02A8FE1D5781CE00B2B2A4 /* StatsViewController.swift */,
+				2FE4A86E1D567989001ECAD8 /* FoodViewController.swift */,
 				2FE4A8D61D56838A001ECAD8 /* ServicesViewController.swift */,
 				2FE4A8D81D5683AA001ECAD8 /* GoodsViewController.swift */,
+				2F02A8FD1D57818300B2B2A4 /* Event */,
+				2B26B9011D571281004EC575 /* ListViewController.swift */,
 				2FE4A8DA1D5683BB001ECAD8 /* ColleaguesViewController.swift */,
 				2FE4A8DC1D5683D3001ECAD8 /* ScheduleViewController.swift */,
 				2FE4A84F1D566B21001ECAD8 /* Main.storyboard */,
@@ -337,6 +380,8 @@
 		2FE4A8CF1D5682C0001ECAD8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2FE4A90C1D5766FE001ECAD8 /* HeaderCell.swift */,
+				2FE4A90D1D5766FE001ECAD8 /* HeaderCell.xib */,
 				2FE4A8601D566B34001ECAD8 /* BaseTableViewCell.swift */,
 				3E30D4DA1D56E8E30076E2D2 /* CellView.xib */,
 				2FE4A8611D566B34001ECAD8 /* DataTableViewCell.swift */,
@@ -378,6 +423,7 @@
 		2FE4A8EA1D56917E001ECAD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2F02A90E1D5789FC00B2B2A4 /* PNChartSwift */,
 				2FE4A9101D576A6A001ECAD8 /* SAP_Logo.png */,
 				2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */,
 				2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */,
@@ -436,6 +482,12 @@
 				TargetAttributes = {
 					2FE4A80C1D56607A001ECAD8 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 9EUCWD26TP;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -545,15 +597,18 @@
 			files = (
 				2FE4A8461D56675D001ECAD8 /* UIApplication.swift in Sources */,
 				2FE4A8891D567A38001ECAD8 /* MultipleColumnLayout.swift in Sources */,
+				2F02A9131D578B7B00B2B2A4 /* PNChartConfig.swift in Sources */,
 				2FE4A8441D56675D001ECAD8 /* UIView.swift in Sources */,
 				2FE4A8C31D5682BA001ECAD8 /* TitleCell.swift in Sources */,
 				2FE4A9031D570350001ECAD8 /* Event.swift in Sources */,
 				2FE4A83F1D56675D001ECAD8 /* String.swift in Sources */,
 				2FE4A88C1D567A38001ECAD8 /* Messages.swift in Sources */,
+				2F02A9161D578B7B00B2B2A4 /* view.swift in Sources */,
 				2FE4A8421D56675D001ECAD8 /* UIImageView.swift in Sources */,
 				2FE4A8401D56675D001ECAD8 /* UITableViewExtension.swift in Sources */,
 				2FE4A8CD1D5682BA001ECAD8 /* ProfileHeaderCell.swift in Sources */,
 				2FE4A86C1D566B68001ECAD8 /* SlideMenuController.swift in Sources */,
+				2F02A9211D578BB300B2B2A4 /* PNBar.swift in Sources */,
 				2FE4A8C71D5682BA001ECAD8 /* CenterLabelCell.swift in Sources */,
 				2FE4A8CE1D5682BA001ECAD8 /* ProfileLabelCell.swift in Sources */,
 				2FE4A8651D566B34001ECAD8 /* BaseTableViewCell.swift in Sources */,
@@ -573,12 +628,17 @@
 				2FE4A8CA1D5682BA001ECAD8 /* ProfileFieldCell.swift in Sources */,
 				2FE4A8D71D56838A001ECAD8 /* ServicesViewController.swift in Sources */,
 				2FE4A8D41D56831C001ECAD8 /* LoginViewController.swift in Sources */,
+				2F02A91E1D578BA100B2B2A4 /* PNLineChartData.swift in Sources */,
 				2FE4A8DF1D5688D8001ECAD8 /* FormerInputAccessoryView.swift in Sources */,
 				2FE4A8C21D5682BA001ECAD8 /* EventFeedCell.swift in Sources */,
 				2FE4A8E11D5688E7001ECAD8 /* UIColor+FormerDemo.swift in Sources */,
+				2F02A9151D578B7B00B2B2A4 /* PNValue.swift in Sources */,
+				2F02A91D1D578BA100B2B2A4 /* PNLineChart.swift in Sources */,
 				2FE4A8DB1D5683BB001ECAD8 /* ColleaguesViewController.swift in Sources */,
+				2F02A8FF1D5781CF00B2B2A4 /* StatsViewController.swift in Sources */,
 				2FE4A8431D56675D001ECAD8 /* UIImage.swift in Sources */,
 				2FE4A8DD1D5683D3001ECAD8 /* ScheduleViewController.swift in Sources */,
+				2F02A91C1D578BA100B2B2A4 /* PNChartLabel.swift in Sources */,
 				2FE4A8111D56607A001ECAD8 /* AppDelegate.swift in Sources */,
 				2FE4A8411D56675D001ECAD8 /* UIViewController.swift in Sources */,
 				2FE4A8E71D568C3C001ECAD8 /* PublicProfileViewController.swift in Sources */,
@@ -588,6 +648,7 @@
 				2FE4A8951D56806D001ECAD8 /* Profile.swift in Sources */,
 				2FE4A88E1D567A38001ECAD8 /* Images.swift in Sources */,
 				2FE4A8531D566B21001ECAD8 /* MainViewController.swift in Sources */,
+				2F02A9141D578B7B00B2B2A4 /* PNChartDelegate.swift in Sources */,
 				2FE4A87B1D5679E2001ECAD8 /* SelectMultipleViewController.swift in Sources */,
 				2FE4A8791D5679E2001ECAD8 /* MessagesViewController.swift in Sources */,
 				2FE4A8961D56806D001ECAD8 /* ProfileViewController.swift in Sources */,
@@ -604,6 +665,7 @@
 				2FE4A88B1D567A38001ECAD8 /* Banner.swift in Sources */,
 				2FE4A85D1D566B21001ECAD8 /* ExSlideMenuController.swift in Sources */,
 				2FE4A8D51D56831C001ECAD8 /* RegisterViewController.swift in Sources */,
+				2F02A9221D578BB300B2B2A4 /* PNBarChart.swift in Sources */,
 				2FE4A8CC1D5682BA001ECAD8 /* ProfileImageDetailCell.swift in Sources */,
 				2FE4A87E1D5679FF001ECAD8 /* Constants.swift in Sources */,
 				3E5D57271D56F3B200E221E0 /* Period.swift in Sources */,
@@ -714,6 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Count",
@@ -736,6 +799,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Count",

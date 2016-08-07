@@ -32,6 +32,8 @@ public func <(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs) == .OrderedAscending
 }
 
+
+
 extension NSDate: Comparable { }
 extension NSDate {
     class func startOfMonthForDate(date: NSDate, usingCalendar calendar:NSCalendar) -> NSDate? {

@@ -118,9 +118,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="sXx-zh-YaM" firstAttribute="top" secondItem="2rZ-Pi-pqq" secondAttribute="bottom" id="8C6-Kd-4u7"/>
-                            <constraint firstAttribute="trailing" secondItem="sXx-zh-YaM" secondAttribute="trailing" id="JRK-iD-4HE"/>
-                            <constraint firstItem="sXx-zh-YaM" firstAttribute="leading" secondItem="QoF-1B-uXa" secondAttribute="leading" id="Ypm-HL-EoD"/>
+                            <constraint firstAttribute="trailing" secondItem="sXx-zh-YaM" secondAttribute="trailing" id="4Ro-Mt-LUG"/>
+                            <constraint firstItem="sXx-zh-YaM" firstAttribute="leading" secondItem="QoF-1B-uXa" secondAttribute="leading" id="Lfw-ti-OID"/>
+                            <constraint firstItem="sXx-zh-YaM" firstAttribute="top" secondItem="2rZ-Pi-pqq" secondAttribute="bottom" id="boP-eR-1M8"/>
                         </constraints>
                     </view>
                     <connections>
@@ -716,7 +716,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SAP_Logo.png" width="2000" height="991"/>
+        <image name="SAP_Logo.png" width="2272" height="1704"/>
         <image name="tab_group.png" width="800" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
