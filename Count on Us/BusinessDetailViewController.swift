@@ -47,6 +47,7 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
             let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
             
             $0.mapView.setRegion(region, animated: true)
+            $0.selectionStyle = .None
             }.configure {
                 $0.rowHeight = 200
             }.onSelected { _ in
@@ -55,7 +56,7 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
         }
         let phoneRow = CustomRowFormer<DynamicHeightCell>(instantiateType: .Nib(nibName: "DynamicHeightCell")) {
             $0.title = "Phone"
-            $0.body = self.business.valueForKey(PF_BUSINESS_PHONE) as? String
+            $0.body = self.business[PF_BUSINESS_PHONE] as? String
             $0.titleLabel.font = .boldSystemFontOfSize(15)
             $0.titleLabel.textColor = SAP_COLOR
             $0.bodyLabel.font = .systemFontOfSize(15)
@@ -64,6 +65,31 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
                 $0.rowHeight = UITableViewAutomaticDimension
             }.onSelected { _ in
                 self.former.deselect(true)
+                var phoneNumber = self.business[PF_BUSINESS_PHONE] as! String
+                phoneNumber = phoneNumber.stringByReplacingOccurrencesOfString("(", withString: "")
+                phoneNumber = phoneNumber.stringByReplacingOccurrencesOfString(")", withString: "")
+                phoneNumber = phoneNumber.stringByReplacingOccurrencesOfString("-", withString: "")
+                phoneNumber = phoneNumber.stringByReplacingOccurrencesOfString("+", withString: "")
+                phoneNumber = phoneNumber.stringByReplacingOccurrencesOfString(" ", withString: "")
+                
+                if let url = NSURL(string: "tel://\(phoneNumber)") {
+                    let actionSheetController: UIAlertController = UIAlertController(title: "Would you like to call", message: self.business[PF_BUSINESS_PHONE] as? String, preferredStyle: .ActionSheet)
+                    actionSheetController.view.tintColor = SAP_COLOR
+                    
+                    let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+                        //Just dismiss the action sheet
+                    }
+                    actionSheetController.addAction(cancelAction)
+                    let single: UIAlertAction = UIAlertAction(title: "Yes", style: .Default)
+                    { action -> Void in
+                        UIApplication.sharedApplication().openURL(url)
+                    }
+                    actionSheetController.addAction(single)
+                    
+                    //Present the AlertController
+                    self.presentViewController(actionSheetController, animated: true, completion: nil)
+                }
+
         }
         let infoRow = CustomRowFormer<DynamicHeightCell>(instantiateType: .Nib(nibName: "DynamicHeightCell")) {
             $0.title = "SAP Discount"
@@ -76,6 +102,7 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
             $0.titleLabel.textColor = SAP_COLOR
             $0.bodyLabel.font = .systemFontOfSize(15)
             $0.date = ""
+            $0.selectionStyle = .None
             }.configure {
                 $0.rowHeight = UITableViewAutomaticDimension
             }.onSelected { _ in
@@ -100,6 +127,7 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
             } else {
                 $0.date = "\(startTime) - \(endTime)"
             }
+            $0.selectionStyle = .None
             }.configure {
                 $0.rowHeight = UITableViewAutomaticDimension
             }.onSelected { _ in
