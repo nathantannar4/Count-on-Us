@@ -12,6 +12,8 @@ import Former
 import Agrume
 
 class MainViewController: FormViewController {
+    
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,18 @@ class MainViewController: FormViewController {
         Profile.sharedInstance.user = PFUser.currentUser()
         Profile.sharedInstance.loadUser()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MainViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
+        
+        configure()
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Updating your data here...
+        former.removeAll()
+        self.refreshControl?.endRefreshing()
         configure()
     }
     
