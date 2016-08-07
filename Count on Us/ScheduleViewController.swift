@@ -20,6 +20,8 @@ class ScheduleViewController: UIViewController {
     var AttendingArray = [NSDate]()
     var InvitedArray = [NSDate]()
     
+    var EventArray = [PFObject]()
+    
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthNameLabel: UILabel!
     @IBOutlet weak var calendarView: JTAppleCalendarView!
@@ -45,6 +47,7 @@ class ScheduleViewController: UIViewController {
         calendarView.scrollToDate(today)
         AttendingArray.removeAll()
         InvitedArray.removeAll()
+        EventArray.removeAll()
         configure()
     }
     
@@ -52,11 +55,11 @@ class ScheduleViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     private func configure(){
         let datesQuery = PFQuery(className: PF_EVENTS_CLASS_NAME)
         datesQuery.whereKey("inviteTo", containedIn: [PFUser.currentUser()!])
+        datesQuery.includeKey("organizer")
+        datesQuery.includeKey("business")
         datesQuery.findObjectsInBackgroundWithBlock({ (results: [PFObject]?, error: NSError?) in
             if error == nil {
                 if results != nil {
@@ -66,9 +69,11 @@ class ScheduleViewController: UIViewController {
                             .map({user in user.objectId!})
                             .contains(PFUser.currentUser()!.objectId!) {
                             self.AttendingArray.append(eventDate!)
+                            self.EventArray.append(result)
                         } else {
                             let eventDate = result["start"] as? NSDate
                             self.InvitedArray.append(eventDate!)
+                            self.EventArray.append(result)
                         }
                     }
                     self.calendarView.reloadData()
@@ -98,22 +103,64 @@ extension ScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         cell.configureCircleColor("Blank")
         
-        for attendingDate in AttendingArray {
-            if attendingDate.isInSameDayAsDate(date) && attendingDate.isSameMonthAsDate(date) && attendingDate.isSameYearAsDate(date) {
-                cell.configureCircleColor("Attending")
-            }
-        }
         for invitedDate in InvitedArray {
             if invitedDate.isInSameDayAsDate(date) && invitedDate.isSameMonthAsDate(date) && invitedDate.isSameYearAsDate(date) {
                 cell.configureCircleColor("Invited")
             }
         }
         
+        for attendingDate in AttendingArray {
+            if attendingDate.isInSameDayAsDate(date) && attendingDate.isSameMonthAsDate(date) && attendingDate.isSameYearAsDate(date) {
+                cell.configureCircleColor("Attending")
+            }
+        }
+        
     }
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
-        print(cell)
+        var activeEvents = [PFObject]()
+        for event in EventArray {
+            let eventStart = event["start"] as! NSDate
+            if eventStart.isInSameDayAsDate(date) && eventStart.isSameMonthAsDate(date) && eventStart.isSameYearAsDate(date) {
+                activeEvents.append(event)
+            }
+        }
+        print(activeEvents)
+        
+        if activeEvents.count == 1 {
+            let detailVC = EventDetailViewController()
+            let invite = activeEvents[0]
+            detailVC.event = invite
+            detailVC.business = invite["business"] as? PFObject
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        } else {
+            //Create the AlertController
+            let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+            
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Which Event?", style: .Cancel) { action -> Void in
+                //Just dismiss the action sheet
+            }
+            
+            actionSheetController.addAction(cancelAction)
+            print(activeEvents.count)
+            for i in 0...activeEvents.count-1 {
+                let single: UIAlertAction = UIAlertAction(title: ((activeEvents[i]).valueForKey("business") as? PFObject)!.valueForKey(PF_BUSINESS_NAME) as? String, style: .Default)
+                { action -> Void in
+                    let detailVC = EventDetailViewController()
+                    let invite = activeEvents[i]
+                    detailVC.event = invite
+                    detailVC.business = invite["business"] as? PFObject
+                    self.navigationController?.pushViewController(detailVC, animated: true)
+                }
+                actionSheetController.addAction(single)
+            }
+            
+            
+            //Present the AlertController
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
+        
+        
     }
     
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
