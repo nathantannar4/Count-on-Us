@@ -21,7 +21,6 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
         super.viewDidLoad()
         
         // Configure UI
-        title = business[PF_BUSINESS_NAME] as? String
         tableView.contentInset.top = 10
         tableView.contentInset.bottom = 50
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Invite", style: .Plain, target: self, action: #selector(inviteButtonPressed))
@@ -37,6 +36,13 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
     
     private func configure() {
         
+        let nameRow = CustomRowFormer<HeaderCell>(instantiateType: .Nib(nibName: "HeaderCell")) {
+            $0.nameLabel.text = self.business[PF_BUSINESS_NAME] as? String
+            }.configure {
+                $0.rowHeight = UITableViewAutomaticDimension
+            }.onSelected { _ in
+                self.former.deselect(true)
+        }
         let mapRow = CustomRowFormer<MapCell>(instantiateType: .Nib(nibName: "MapCell")) {
             let anotation = MKPointAnnotation()
             anotation.coordinate = CLLocation(latitude: self.business[PF_BUSINESS_LAT] as! Double, longitude: self.business[PF_BUSINESS_LONG] as! Double).coordinate
@@ -166,7 +172,7 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
 
         
         
-        self.former.append(sectionFormer: SectionFormer(rowFormer: mapRow, infoRow, whenOffered, phoneRow, urlRow, reviewRow))
+        self.former.append(sectionFormer: SectionFormer(rowFormer: mapRow, nameRow, infoRow, whenOffered, phoneRow, urlRow, reviewRow))
         self.former.reload()
         
         

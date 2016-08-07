@@ -16,7 +16,6 @@ final class Event {
     var organizer: PFUser?
     var inviteTo = [PFUser]()
     var info: String?
-    var location: String?
     var business: PFObject?
     var start: NSDate?
     var end: NSDate?
@@ -38,7 +37,6 @@ final class Event {
             newEvent["info"] = ""
         }
         newEvent["buiness"] = business
-        newEvent["location"] = location
         newEvent["organizer"] = PFUser.currentUser()
         newEvent["inviteTo"] = inviteTo
         newEvent["confirmed"] = []

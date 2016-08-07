@@ -88,6 +88,9 @@
 		2FE4A8FC1D56D1C5001ECAD8 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */; };
 		2FE4A9011D5702D0001ECAD8 /* CreateInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */; };
 		2FE4A9031D570350001ECAD8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9021D570350001ECAD8 /* Event.swift */; };
+		2FE4A9051D57141E001ECAD8 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A9041D57141E001ECAD8 /* HeaderCell.xib */; };
+		2FE4A9071D571467001ECAD8 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9061D571467001ECAD8 /* HeaderCell.swift */; };
+		2FE4A9091D571C88001ECAD8 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9081D571C88001ECAD8 /* EventDetailViewController.swift */; };
 		A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +180,9 @@
 		2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInvitationViewController.swift; sourceTree = "<group>"; };
 		2FE4A9021D570350001ECAD8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		2FE4A9041D57141E001ECAD8 /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		2FE4A9061D571467001ECAD8 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		2FE4A9081D571C88001ECAD8 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		7F8997FE80582C753F5B3994 /* Pods-Count on Us.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6FCF480265BA27C3D852B1 /* Pods-Count on Us.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.release.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.release.xcconfig"; sourceTree = "<group>"; };
 		D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Count_on_Us.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -236,6 +242,7 @@
 				2FE4A86E1D567989001ECAD8 /* FoodViewController.swift */,
 				2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */,
 				2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */,
+				2FE4A9081D571C88001ECAD8 /* EventDetailViewController.swift */,
 				2FE4A9021D570350001ECAD8 /* Event.swift */,
 				2FE4A8D61D56838A001ECAD8 /* ServicesViewController.swift */,
 				2FE4A8D81D5683AA001ECAD8 /* GoodsViewController.swift */,
@@ -325,6 +332,7 @@
 				2FE4A89B1D5682BA001ECAD8 /* ProfileImageCell.xib */,
 				2FE4A89C1D5682BA001ECAD8 /* ProfileImageDetailCell.xib */,
 				2FE4A89D1D5682BA001ECAD8 /* ProfileHeaderCell.xib */,
+				2FE4A9041D57141E001ECAD8 /* HeaderCell.xib */,
 				2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */,
 				2FE4A89E1D5682BA001ECAD8 /* TitleCell.xib */,
 				2FE4A89F1D5682BA001ECAD8 /* ProfileLabelCell.xib */,
@@ -335,6 +343,7 @@
 				2FE4A8A41D5682BA001ECAD8 /* ImageCell.xib */,
 				2FE4A8A61D5682BA001ECAD8 /* ImageCell.swift */,
 				2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */,
+				2FE4A9061D571467001ECAD8 /* HeaderCell.swift */,
 				2FE4A8A71D5682BA001ECAD8 /* EventFeedCell.swift */,
 				2FE4A8A81D5682BA001ECAD8 /* TitleCell.swift */,
 				2FE4A8A91D5682BA001ECAD8 /* DividerCell.swift */,
@@ -454,6 +463,7 @@
 				2FE4A8B51D5682BA001ECAD8 /* ProfileFieldCell.xib in Resources */,
 				2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */,
 				2FE4A8B91D5682BA001ECAD8 /* TitleCell.xib in Resources */,
+				2FE4A9051D57141E001ECAD8 /* HeaderCell.xib in Resources */,
 				2FE4A8B81D5682BA001ECAD8 /* ProfileHeaderCell.xib in Resources */,
 				2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */,
 				2FE4A8BD1D5682BA001ECAD8 /* DetailPostCell.xib in Resources */,
@@ -522,6 +532,7 @@
 				2FE4A8C31D5682BA001ECAD8 /* TitleCell.swift in Sources */,
 				2FE4A9031D570350001ECAD8 /* Event.swift in Sources */,
 				2FE4A83F1D56675D001ECAD8 /* String.swift in Sources */,
+				2FE4A9091D571C88001ECAD8 /* EventDetailViewController.swift in Sources */,
 				2FE4A88C1D567A38001ECAD8 /* Messages.swift in Sources */,
 				2FE4A8421D56675D001ECAD8 /* UIImageView.swift in Sources */,
 				2FE4A8401D56675D001ECAD8 /* UITableViewExtension.swift in Sources */,
@@ -556,6 +567,7 @@
 				2FE4A8E71D568C3C001ECAD8 /* PublicProfileViewController.swift in Sources */,
 				2FE4A8C81D5682BA001ECAD8 /* LeftLabelCell.swift in Sources */,
 				2FE4A88D1D567A38001ECAD8 /* Utilities.swift in Sources */,
+				2FE4A9071D571467001ECAD8 /* HeaderCell.swift in Sources */,
 				2FE4A8951D56806D001ECAD8 /* Profile.swift in Sources */,
 				2FE4A88E1D567A38001ECAD8 /* Images.swift in Sources */,
 				2FE4A8531D566B21001ECAD8 /* MainViewController.swift in Sources */,
