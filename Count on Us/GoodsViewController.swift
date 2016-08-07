@@ -39,6 +39,7 @@ class GoodsViewController: UIViewController, MKMapViewDelegate, CLLocationManage
         mapView.showsUserLocation = true
         
         let query = PFQuery(className: PF_GOODS_CLASS_NAME)
+        query.addAscendingOrder(PF_BUSINESS_LOWERCASE)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             if error == nil {
                 for object in objects! {
