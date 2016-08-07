@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mSi-EU-YKq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="mSi-EU-YKq">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -425,7 +425,7 @@
                                 <rect key="frame" x="0.0" y="22" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Cw-If-OOY" id="8cI-ii-BcO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzp-qD-RUq">
@@ -532,7 +532,7 @@
                                 <rect key="frame" x="0.0" y="130" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Unk-s6-6Bp" id="DVF-yY-dAk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -591,7 +591,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="18B-mT-h3h" id="j90-Zp-Vjf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -689,15 +689,31 @@
                                 <rect key="frame" x="0.0" y="135" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Accepted Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUn-su-mWF">
+                                <rect key="frame" x="121" y="565" width="133" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tentative Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG2-mz-Ydx">
+                                <rect key="frame" x="121" y="594" width="131" height="21"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uxh-Ul-dIv" firstAttribute="leading" secondItem="FyZ-Zy-hZE" secondAttribute="leading" id="4KC-0q-xTb"/>
                             <constraint firstItem="uxh-Ul-dIv" firstAttribute="top" secondItem="bLw-SJ-Ua0" secondAttribute="bottom" constant="34" id="5BJ-Pz-0QK"/>
+                            <constraint firstItem="QG2-mz-Ydx" firstAttribute="centerX" secondItem="A2N-lC-uej" secondAttribute="centerX" id="6NE-Ac-dTn"/>
                             <constraint firstItem="uxh-Ul-dIv" firstAttribute="leading" secondItem="A2N-lC-uej" secondAttribute="leadingMargin" constant="4" id="8H8-bx-Kj6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="uxh-Ul-dIv" secondAttribute="trailing" constant="61" id="HDn-7T-Eu9"/>
                             <constraint firstItem="nzg-U0-hNj" firstAttribute="leading" secondItem="A2N-lC-uej" secondAttribute="leading" id="JoS-se-OLd"/>
                             <constraint firstItem="nzg-U0-hNj" firstAttribute="top" secondItem="bLw-SJ-Ua0" secondAttribute="bottom" constant="115" id="La7-tp-NAt"/>
+                            <constraint firstItem="sUn-su-mWF" firstAttribute="centerX" secondItem="A2N-lC-uej" secondAttribute="centerX" id="bsa-vN-9uK"/>
                             <constraint firstAttribute="trailing" secondItem="nzg-U0-hNj" secondAttribute="trailing" id="ftm-XG-o5v"/>
                             <constraint firstItem="FyZ-Zy-hZE" firstAttribute="top" secondItem="uxh-Ul-dIv" secondAttribute="bottom" constant="2" id="gDi-4x-omS"/>
                             <constraint firstItem="uxh-Ul-dIv" firstAttribute="trailing" secondItem="FyZ-Zy-hZE" secondAttribute="trailing" id="sJs-ao-4gN"/>
@@ -706,8 +722,10 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="acceptedLegendLabel" destination="sUn-su-mWF" id="WZw-Xx-Hdj"/>
                         <outlet property="calendarView" destination="nzg-U0-hNj" id="WHE-Pr-ST6"/>
                         <outlet property="monthNameLabel" destination="FyZ-Zy-hZE" id="cd7-Z7-uQF"/>
+                        <outlet property="tentativeLegendLabel" destination="QG2-mz-Ydx" id="S5f-oU-d35"/>
                         <outlet property="yearLabel" destination="uxh-Ul-dIv" id="P4Y-AD-vRq"/>
                     </connections>
                 </viewController>

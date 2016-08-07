@@ -11,8 +11,12 @@ import JTAppleCalendar
 import SwiftDate
 import RealmSwift
 import Parse
+import QuartzCore
 
 class ScheduleViewController: UIViewController {
+    
+    @IBOutlet weak var acceptedLegendLabel: UILabel!
+    @IBOutlet weak var tentativeLegendLabel: UILabel!
     
     let userData = UserData()
     let today = NSDate.today()
@@ -39,6 +43,11 @@ class ScheduleViewController: UIViewController {
         calendarView.delegate = self
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         calendarView.firstDayOfWeek = .Sunday
+        
+        acceptedLegendLabel.layer.cornerRadius = 8
+        acceptedLegendLabel.layer.masksToBounds = true
+        tentativeLegendLabel.layer.cornerRadius = 8
+        tentativeLegendLabel.layer.masksToBounds = true;
         
     }
     
@@ -127,7 +136,9 @@ extension ScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         }
         print(activeEvents)
         
-        if activeEvents.count == 1 {
+        if activeEvents.count == 0 {
+            // Do Nothing
+        } else if activeEvents.count == 1 {
             let detailVC = EventDetailViewController()
             let invite = activeEvents[0]
             detailVC.event = invite
