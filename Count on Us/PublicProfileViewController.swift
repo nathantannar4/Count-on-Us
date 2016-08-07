@@ -27,6 +27,8 @@ class PublicProfileViewController: FormViewController  {
             Utilities.loginUser(self)
         }
         
+        print(user)
+        
         if PFUser.currentUser()!.valueForKey(PF_USER_FULLNAME) as? String != user![PF_USER_FULLNAME] as? String {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Message", style: .Plain, target: self, action: #selector(messageButtonPressed))
         }

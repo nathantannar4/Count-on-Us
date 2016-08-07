@@ -45,8 +45,10 @@ class MainViewController: FormViewController {
     func refresh(sender:AnyObject)
     {
         // Updating your data here...
-        former.remove(section: 1)
-        former.remove(section: 1)
+        if former.sectionFormers.count > 1 {
+            former.remove(section: 1)
+            former.remove(section: 1)
+        }
         self.refreshControl?.endRefreshing()
         if PFUser.currentUser() != nil {
             configure()

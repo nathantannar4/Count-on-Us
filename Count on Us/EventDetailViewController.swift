@@ -37,16 +37,21 @@ class EventDetailViewController: FormViewController {
         tableView.contentInset.bottom = 30
         self.navigationController?.navigationBarHidden = false;
         
-        confirmedUsers = event?.objectForKey("confirmed") as! [PFUser]
-        maybeUsers = event?.objectForKey("maybe") as! [PFUser]
-        invitedUsers = event?.objectForKey("maybe") as! [PFUser]
+        let confirmedUsersIDs = event?.objectForKey("confirmed") as! [PFUser]
+        let maybeUsersIDs = event?.objectForKey("maybe") as! [PFUser]
+        let invitedUsersIDs = event?.objectForKey("inviteTo") as! [PFUser]
         
-        for confirmed in confirmedUsers {
+        confirmedUsers = [PFUser]()
+        maybeUsers = [PFUser]()
+        invitedUsers = [PFUser]()
+        
+        for confirmed in confirmedUsersIDs {
             let userQuery = PFUser.query()
             userQuery?.whereKey("objectId", equalTo: confirmed.objectId!)
             do {
                 let userFound = try userQuery?.findObjects().first
                 confirmedUsernames.append((userFound?.valueForKey("fullname") as? String)!)
+                confirmedUsers.append(userFound as! PFUser)
                 
             } catch _ {
                 print("Error in finding User")
@@ -54,12 +59,13 @@ class EventDetailViewController: FormViewController {
             
         }
         
-        for maybe in maybeUsers {
+        for maybe in maybeUsersIDs {
             let userQuery = PFUser.query()
             userQuery?.whereKey("objectId", equalTo: maybe.objectId!)
             do {
                 let userFound = try userQuery?.findObjects().first
                 maybeUsernames.append((userFound?.valueForKey("fullname") as? String)!)
+                maybeUsers.append(userFound as! PFUser)
                 
             } catch _ {
                 print("Error in finding User")
@@ -67,12 +73,13 @@ class EventDetailViewController: FormViewController {
             
         }
         
-        for invited in invitedUsers {
+        for invited in invitedUsersIDs {
             let userQuery = PFUser.query()
             userQuery?.whereKey("objectId", equalTo: invited.objectId!)
             do {
                 let userFound = try userQuery?.findObjects().first
                 invitedUsernames.append((userFound?.valueForKey("fullname") as? String)!)
+                invitedUsers.append(userFound as! PFUser)
                 
             } catch _ {
                 print("Error in finding User")
@@ -179,8 +186,9 @@ class EventDetailViewController: FormViewController {
                         profileVC.user = self!.confirmedUsers[index]
                         self?.navigationController?.pushViewController(profileVC, animated: true)
                     })
+                
+                index += 1
             }
-            index += 1
         }
         
         index = 0
@@ -195,17 +203,18 @@ class EventDetailViewController: FormViewController {
                     }.onSelected { [weak self] _ in
                         self?.former.deselect(true)
                         let profileVC = PublicProfileViewController()
+                        print(self!.maybeUsers[index])
                         profileVC.user = self!.maybeUsers[index]
                         self?.navigationController?.pushViewController(profileVC, animated: true)
+
                     })
+                index += 1
             }
-            index += 1
         }
         
         index = 0
         for currentUser in invitedUsernames {
-            print(currentUser)
-            if currentUser != currentFullName {
+            if currentUser != currentFullName && !confirmedUsernames.contains(currentUser) && !maybeUsernames.contains(currentUser) {
                 invitedRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
                     $0.iconView.backgroundColor = SAP_COLOR
                     $0.titleLabel.textColor = UIColor.blackColor()
@@ -215,11 +224,13 @@ class EventDetailViewController: FormViewController {
                     }.onSelected { [weak self] _ in
                         self?.former.deselect(true)
                         let profileVC = PublicProfileViewController()
-                        profileVC.user = self!.maybeUsers[index]
+                        profileVC.user = self!.invitedUsers[index]
                         self?.navigationController?.pushViewController(profileVC, animated: true)
+
                     })
+                
+                index += 1
             }
-            index += 1
         }
 
         let choiceRow = SegmentedRowFormer<FormSegmentedCell>() {
