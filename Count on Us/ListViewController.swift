@@ -39,6 +39,18 @@ class ListViewController: FormViewController, UISearchBarDelegate {
         if days.count == 7 {
             return "Everyday"
         }
+        else if days.count == 5 &&
+            days.contains("Monday") &&
+            days.contains("Tuesday") &&
+            days.contains("Wednesday") &&
+            days.contains("Thursday") &&
+            days.contains("Friday") {
+            return "Weekdays"
+        } else if days.count == 2 &&
+            days.contains("Saturday") &&
+            days.contains("Sunday") {
+            return "Weekends"
+        }
         
         var daysAbbrevs = [String]()
         for day in days {
