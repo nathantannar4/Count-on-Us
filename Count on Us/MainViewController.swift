@@ -8,8 +8,10 @@
 
 import UIKit
 import Parse
+import Former
+import Agrume
 
-class MainViewController: UIViewController {
+class MainViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,23 @@ class MainViewController: UIViewController {
         
         Profile.sharedInstance.user = PFUser.currentUser()
         Profile.sharedInstance.loadUser()
+        
+        configure()
+    }
     
+    private lazy var onlyImageRow: LabelRowFormer<ImageCell> = {
+        LabelRowFormer<ImageCell>(instantiateType: .Nib(nibName: "ImageCell")) {
+            $0.displayImage.image = UIImage(named: "SAP_Logo.png")
+            }.configure {
+                $0.rowHeight = 200
+            }
+            .onSelected({ (cell: LabelRowFormer<ImageCell>) in
+                let agrume = Agrume(image: cell.cell.displayImage.image!)
+                    agrume.showFrom(self)
+            })
+    }()
+    
+    private func configure() {
         
         
     }

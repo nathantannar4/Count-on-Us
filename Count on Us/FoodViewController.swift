@@ -23,6 +23,7 @@ class FoodViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         super.viewDidLoad()
         
         // Configure Navbar
+        title = "Food Discounts"
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
         
         // Location Services

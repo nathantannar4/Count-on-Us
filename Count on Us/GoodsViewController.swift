@@ -23,7 +23,7 @@ class GoodsViewController: FormViewController, UISearchBarDelegate {
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
         
         // Configure UI
-        title = "Partner Goods"
+        title = "Good Discounts"
         tableView.contentInset.top = 40
         
         self.searchBar.delegate = self

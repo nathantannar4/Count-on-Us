@@ -28,7 +28,7 @@ class ServicesViewController: FormViewController, UISearchBarDelegate {
         
         
         //configure UI
-        title = "Services"
+        title = "Service Discounts"
         
         SVProgressHUD.showWithStatus("Loading available Services...")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {() -> Void in
