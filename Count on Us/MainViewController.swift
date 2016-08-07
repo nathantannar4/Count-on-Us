@@ -23,6 +23,9 @@ class MainViewController: UIViewController {
         
         Profile.sharedInstance.user = PFUser.currentUser()
         Profile.sharedInstance.loadUser()
+    
+        
+        
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
