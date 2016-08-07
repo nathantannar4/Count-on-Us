@@ -20,11 +20,19 @@ class BusinessDetailViewController: FormViewController, MKMapViewDelegate, CLLoc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure UI
         title = business[PF_BUSINESS_NAME] as? String
         tableView.contentInset.top = 10
         tableView.contentInset.bottom = 50
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Invite", style: .Plain, target: self, action: #selector(inviteButtonPressed))
         
         configure()
+    }
+    
+    func inviteButtonPressed(sender: AnyObject?) {
+        let inviteVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CreateInvitationViewController") as! CreateInvitationViewController
+        inviteVC.business = business
+        self.navigationController?.pushViewController(inviteVC, animated: true)
     }
     
     private func configure() {

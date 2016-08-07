@@ -86,6 +86,8 @@
 		2FE4A8F41D56C61F001ECAD8 /* BusinessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */; };
 		2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */; };
 		2FE4A8FC1D56D1C5001ECAD8 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */; };
+		2FE4A9011D5702D0001ECAD8 /* CreateInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */; };
+		2FE4A9031D570350001ECAD8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9021D570350001ECAD8 /* Event.swift */; };
 		A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +175,8 @@
 		2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailViewController.swift; sourceTree = "<group>"; };
 		2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInvitationViewController.swift; sourceTree = "<group>"; };
+		2FE4A9021D570350001ECAD8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		7F8997FE80582C753F5B3994 /* Pods-Count on Us.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6FCF480265BA27C3D852B1 /* Pods-Count on Us.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.release.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.release.xcconfig"; sourceTree = "<group>"; };
 		D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Count_on_Us.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +235,8 @@
 				2FE4A8481D566B21001ECAD8 /* MainViewController.swift */,
 				2FE4A86E1D567989001ECAD8 /* FoodViewController.swift */,
 				2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */,
+				2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */,
+				2FE4A9021D570350001ECAD8 /* Event.swift */,
 				2FE4A8D61D56838A001ECAD8 /* ServicesViewController.swift */,
 				2FE4A8D81D5683AA001ECAD8 /* GoodsViewController.swift */,
 				2FE4A8DA1D5683BB001ECAD8 /* ColleaguesViewController.swift */,
@@ -514,6 +520,7 @@
 				2FE4A8891D567A38001ECAD8 /* MultipleColumnLayout.swift in Sources */,
 				2FE4A8441D56675D001ECAD8 /* UIView.swift in Sources */,
 				2FE4A8C31D5682BA001ECAD8 /* TitleCell.swift in Sources */,
+				2FE4A9031D570350001ECAD8 /* Event.swift in Sources */,
 				2FE4A83F1D56675D001ECAD8 /* String.swift in Sources */,
 				2FE4A88C1D567A38001ECAD8 /* Messages.swift in Sources */,
 				2FE4A8421D56675D001ECAD8 /* UIImageView.swift in Sources */,
@@ -527,6 +534,7 @@
 				2FE4A8541D566B21001ECAD8 /* LeftViewController.swift in Sources */,
 				2FE4A8CB1D5682BA001ECAD8 /* ProfileImageCell.swift in Sources */,
 				2FE4A8901D567A38001ECAD8 /* Camera.swift in Sources */,
+				2FE4A9011D5702D0001ECAD8 /* CreateInvitationViewController.swift in Sources */,
 				2FE4A8D91D5683AA001ECAD8 /* GoodsViewController.swift in Sources */,
 				2FE4A8E51D568A2C001ECAD8 /* NSDate+Utilities.m in Sources */,
 				2FE4A8971D56806D001ECAD8 /* EditProfileViewController.swift in Sources */,

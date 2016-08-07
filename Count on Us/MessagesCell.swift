@@ -12,30 +12,12 @@ import ParseUI
 
 class MessagesCell: UITableViewCell {
     
-    @IBOutlet var userImage: PFImageView!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var lastMessageLabel: UILabel!
     @IBOutlet var timeElapsedLabel: UILabel!
     @IBOutlet var counterLabel: UILabel!
     
     func bindData(message: PFObject) {
-        userImage.layer.cornerRadius = userImage.frame.size.width / 2
-        userImage.layer.masksToBounds = true
-        userImage.layer.borderWidth = 2
-        userImage.layer.borderColor = SAP_COLOR.CGColor
-        
-        
-        let id = message[PF_MESSAGES_GROUPID] as? String
-        
-        /*
-        if id?.characters.count > 10 {
-            let lastUser = message[PF_MESSAGES_LASTUSER] as? PFUser
-            if lastUser != PFUser.currentUser()! {
-                userImage.file = lastUser?[PF_USER_PICTURE] as? PFFile
-                userImage.loadInBackground()
-            }
-        }
-        */
         
         descriptionLabel.text = message[PF_MESSAGES_DESCRIPTION] as? String
         lastMessageLabel.text = message[PF_MESSAGES_LASTMESSAGE] as? String
