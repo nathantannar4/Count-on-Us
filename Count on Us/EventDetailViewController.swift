@@ -89,13 +89,13 @@ class EventDetailViewController: FormViewController {
     private lazy var eventRow: CustomRowFormer<EventFeedCell> = {
         CustomRowFormer<EventFeedCell> (instantiateType: .Nib(nibName: "EventFeedCell")) {
         var organizer = self.event!["organizer"] as! PFUser
-        $0.title.text = self.event!["title"] as? String
-        $0.location.text = self.event!["location"] as? String
+        $0.title.text = self.business![PF_BUSINESS_NAME] as? String
+        $0.timeDay.text = self.event!["info"] as? String
         let startDate = self.event!["start"] as? NSDate
         let endDate = self.event!["end"] as? NSDate
         let interval = endDate!.timeIntervalSinceDate(startDate!)
         
-        $0.timeDay.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
+        $0.location.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
         $0.organizer.text = "Organized By: \(organizer.valueForKey("fullname") as! String)"
         $0.attendence.text = "\(self.confirmedUsernames.count) Confirmed, \(self.maybeUsernames.count) Maybe"
         }.configure {
@@ -120,6 +120,18 @@ class EventDetailViewController: FormViewController {
             self?.navigationController?.pushViewController(profileVC, animated: true)
         }
     }()
+    
+    let createMenu: ((String, (() -> Void)?) -> RowFormer) = { text, onSelected in
+        return LabelRowFormer<FormLabelCell>() {
+            $0.titleLabel.textColor = SAP_COLOR
+            $0.titleLabel.font = .boldSystemFontOfSize(16)
+            $0.accessoryType = .DisclosureIndicator
+            }.configure {
+                $0.text = text
+            }.onSelected { _ in
+                onSelected?()
+        }
+    }
     
     
     private func configure() {
@@ -245,8 +257,15 @@ class EventDetailViewController: FormViewController {
                 })
         }
         
+        let businessRow = createMenu("View Business") { [weak self] in
+            self?.former.deselect(true)
+            let detailVC = BusinessDetailViewController()
+            detailVC.business = self!.business
+            self!.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
         self.former.append(sectionFormer: SectionFormer(rowFormer: eventRow, dividerRow))
-        self.former.append(sectionFormer: SectionFormer(rowFormer: choiceRow))
+        self.former.append(sectionFormer: SectionFormer(rowFormer: businessRow, choiceRow))
         self.former.append(sectionFormer: SectionFormer(rowFormers: confirmedRows).set(headerViewFormer: Utilities.createHeader("Confirmed")))
         self.former.append(sectionFormer: SectionFormer(rowFormers: maybeRows).set(headerViewFormer: Utilities.createHeader("Maybe")))
         

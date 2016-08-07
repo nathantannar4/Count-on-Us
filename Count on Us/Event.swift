@@ -36,7 +36,7 @@ final class Event {
         } else {
             newEvent["info"] = ""
         }
-        newEvent["buiness"] = business
+        newEvent["business"] = business
         newEvent["organizer"] = PFUser.currentUser()
         newEvent["inviteTo"] = inviteTo
         newEvent["confirmed"] = []

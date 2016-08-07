@@ -37,6 +37,7 @@ class MainViewController: FormViewController {
                 $0.rowHeight = 200
             }
             .onSelected({ (cell: LabelRowFormer<ImageCell>) in
+                self.former.deselect(true)
                 let agrume = Agrume(image: cell.cell.displayImage.image!)
                     agrume.showFrom(self)
             })
@@ -50,7 +51,7 @@ class MainViewController: FormViewController {
         var invites = [CustomRowFormer<EventFeedCell>]()
         
         let query = PFQuery(className: "Events")
-        //query.whereKey("inviteTo", containedIn: [PFUser.currentUser()!.objectId!])
+        query.whereKey("inviteTo", containedIn: [PFUser.currentUser()!])
         query.addAscendingOrder(PF_CREATEDAT)
         query.includeKey("organizer")
         query.includeKey("business")
