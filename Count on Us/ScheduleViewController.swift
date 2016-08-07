@@ -103,21 +103,21 @@ extension ScheduleViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         cell.configureCircleColor("Blank")
         
-        for attendingDate in AttendingArray {
-            if attendingDate.isInSameDayAsDate(date) && attendingDate.isSameMonthAsDate(date) && attendingDate.isSameYearAsDate(date) {
-                cell.configureCircleColor("Attending")
-            }
-        }
         for invitedDate in InvitedArray {
             if invitedDate.isInSameDayAsDate(date) && invitedDate.isSameMonthAsDate(date) && invitedDate.isSameYearAsDate(date) {
                 cell.configureCircleColor("Invited")
             }
         }
         
+        for attendingDate in AttendingArray {
+            if attendingDate.isInSameDayAsDate(date) && attendingDate.isSameMonthAsDate(date) && attendingDate.isSameYearAsDate(date) {
+                cell.configureCircleColor("Attending")
+            }
+        }
+        
     }
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        let cell = (cell as! CellView)
         var activeEvents = [PFObject]()
         for event in EventArray {
             let eventStart = event["start"] as! NSDate
