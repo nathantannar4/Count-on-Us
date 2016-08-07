@@ -16,4 +16,5 @@ pod 'SwiftDate'
 pod 'RealmSwift'
 pod 'SVProgressHUD'
 pod 'JSQWebViewController'
+pod 'MVCarouselCollectionView'
 end

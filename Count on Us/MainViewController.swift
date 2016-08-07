@@ -10,42 +10,17 @@ import UIKit
 import Parse
 import Former
 import Agrume
+import MVCarouselCollectionView
 
-class MainViewController: FormViewController {
+class MainViewController: FormViewController, MVCarouselCollectionViewDelegate {
     
     var refreshControl: UIRefreshControl!
     var firstLoad = true
+    var collectionView : MVCarouselCollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let query = PFQuery(className: "Food")
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            if error == nil {
-                for object in objects! {
     
-                    var dayStats = [NSDate]()
-                    var dayStatsCount = [CGFloat]()
-                    for date in 1...30 {
-                        dayStats.append(NSDate().dateBySubtractingDays(date))
-                        dayStatsCount.append(CGFloat(Int(arc4random_uniform(50))))
-                    }
-                    object["dayStats"] = dayStats
-                    object["dayStatsCount"] = dayStatsCount
-                    object.saveInBackgroundWithBlock({ (sucess: Bool, error: NSError?) in
-                        if error != nil {
-                            print(error)
-                        }
-                    })
-                }
-            }
-        }
-        
-        
-        
-        
-        
-        
         
         // Configure Navbar
         title = "Home"
@@ -65,6 +40,7 @@ class MainViewController: FormViewController {
         self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
         self.former.reload()
         configure()
+        configureCollectionView()
     }
     
     func refresh(sender:AnyObject)
@@ -173,6 +149,34 @@ class MainViewController: FormViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func configureCollectionView() {
+        collectionView.frame = CGRectMake(0, 100, self.view.frame.width, 300)
+        collectionView.selectDelegate = self
+        collectionView.imagePaths = [ "SAP_Logo.png", "SAP-Logo.png" ]
+        collectionView.commonImageLoader = self.imageLoader
+        collectionView.maximumZoom = 2.0
+        collectionView.reloadData()
+    }
+    
+    let imageLoader: ((imageView: UIImageView, imagePath : String, completion: (newImage: Bool) -> ()) -> ()) = {
+        (imageView: UIImageView, imagePath : String, completion: (newImage: Bool) -> ()) in
+        
+        imageView.image = UIImage(named:imagePath)
+        completion(newImage: imageView.image != nil)
+    }
+
+    
+    // MARK:  MVCarouselCollectionViewDelegate
+    func carousel(carousel: MVCarouselCollectionView, didSelectCellAtIndexPath indexPath: NSIndexPath) {
+        
+        // Do something with cell selection
+    }
+    
+    func carousel(carousel: MVCarouselCollectionView, didScrollToCellAtIndex cellIndex : NSInteger) {
+        
+        // Page changed, can use this to update page control
     }
 
 }

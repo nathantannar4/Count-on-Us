@@ -1,0 +1,6 @@
+framework module MVCarouselCollectionView {
+  umbrella header "MVCarouselCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

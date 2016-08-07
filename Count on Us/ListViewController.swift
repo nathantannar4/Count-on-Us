@@ -23,7 +23,8 @@ class ListViewController: FormViewController, UISearchBarDelegate {
     
         self.searchBar?.delegate = self
         title = "\(self.className) Discounts"
-        tableView.contentInset.top = 80
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 100)
+        tableView.contentInset.top = 40
         
         SVProgressHUD.showWithStatus("Loading available \(self.className)...")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {() -> Void in

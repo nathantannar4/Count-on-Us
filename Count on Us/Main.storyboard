@@ -108,7 +108,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-zh-YaM">
+                            <searchBar contentMode="redraw" placeholder="Search Businesses by Name" translatesAutoresizingMaskIntoConstraints="NO" id="sXx-zh-YaM">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -118,9 +118,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="sXx-zh-YaM" secondAttribute="trailing" id="4Ro-Mt-LUG"/>
-                            <constraint firstItem="sXx-zh-YaM" firstAttribute="leading" secondItem="QoF-1B-uXa" secondAttribute="leading" id="Lfw-ti-OID"/>
-                            <constraint firstItem="sXx-zh-YaM" firstAttribute="top" secondItem="2rZ-Pi-pqq" secondAttribute="bottom" id="boP-eR-1M8"/>
+                            <constraint firstAttribute="trailing" secondItem="sXx-zh-YaM" secondAttribute="trailing" id="a4A-sU-iG4"/>
+                            <constraint firstItem="sXx-zh-YaM" firstAttribute="leading" secondItem="QoF-1B-uXa" secondAttribute="leading" id="gii-IH-pqa"/>
+                            <constraint firstItem="sXx-zh-YaM" firstAttribute="top" secondItem="2rZ-Pi-pqq" secondAttribute="bottom" id="okY-Vl-ZMt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -225,7 +225,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="dKy-Jg-cbS">
+                            <searchBar contentMode="redraw" placeholder="Search Colleagues" translatesAutoresizingMaskIntoConstraints="NO" id="dKy-Jg-cbS">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>

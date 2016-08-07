@@ -12,6 +12,7 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
   - JSQWebViewController (3.0.0)
   - JTAppleCalendar (4.1.2)
+  - MVCarouselCollectionView (1.0.9)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
   - ParseUI (1.2.0):
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - JSQMessagesViewController
   - JSQWebViewController
   - JTAppleCalendar
+  - MVCarouselCollectionView
   - Parse (= 1.13.0)
   - ParseUI
   - RealmSwift
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   JSQWebViewController: eaa6bd68d9e1426ae25ade99c9bbde4c6cdd4120
   JTAppleCalendar: f705daea0c7e833a3dbd88aca753c425b565f2c5
+  MVCarouselCollectionView: 45b31730d7424a6d9dde3d5fa8f794efefea37f9
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
@@ -53,6 +56,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
 
-PODFILE CHECKSUM: 3b4e00180dcf160082572efaf8d87161d613ec44
+PODFILE CHECKSUM: 4d927aef39e38f63061f8146de560c74d03bc374
 
 COCOAPODS: 1.0.1

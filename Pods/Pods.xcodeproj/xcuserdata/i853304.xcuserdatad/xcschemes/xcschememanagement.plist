@@ -44,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MVCarouselCollectionView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,6 +87,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>11B3736C80732217327571798DAD45F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1ED4DFAAD25E1999D0244868457A351E</key>
 		<dict>
 			<key>primary</key>
@@ -92,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>551D4AB854FBEC15DB8902113A7698B4</key>
+		<key>466A2A7DD9C27FF8048A6A9A50FFB50A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>657C9530AC9D934D65580FB16D63AFA9</key>
+		<key>7563FE59235ACAD2999C2E1849EDFAE7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>91FE4E3C2B90A6C6498F0F88505EB14A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95CC70F73B6FFAAAB416F647815F56B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,17 +142,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6D8C178BBB857F81A12F973A767AD9C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>D26F6213C721944E712FCD237E2F6D3A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DCCDC324E8821374E57B31D24D0C6FE4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +152,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2DF6CBC1107A93E9388CAD5D47A5E5D</key>
+		<key>E645C3017EF5EB8DA63A550722A8CBB0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
