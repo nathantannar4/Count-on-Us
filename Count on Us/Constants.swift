@@ -58,6 +58,16 @@ let PF_BUSINESS_LAT                     = "latitude"                //  String
 let PF_BUSINESS_LONG                    = "longitude"               //  String
 let PF_BUSINESS_INFO                    = "info"                    //  String
 let PF_BUSINESS_MORE_INFO               = "additionalInfo"          //  String
+let PF_BUSINESS_LOWERCASE               = "company_lowercase"       //  String
+/* Services */
+let PF_SERVICES_CLASS_NAME              = "Services"                //  Class name
+
+/* Goods */
+let PF_GOODS_CLASS_NAME                 = "Goods"                   //  Class name
+
+
+/* Posts */
+let POSTS_CLASS_NAME                     = "Posts"                   //  Class name
 
 /* Chat */
 let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name
