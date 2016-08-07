@@ -80,7 +80,7 @@
 		2FE4A8E11D5688E7001ECAD8 /* UIColor+FormerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E01D5688E7001ECAD8 /* UIColor+FormerDemo.swift */; };
 		2FE4A8E51D568A2C001ECAD8 /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E41D568A2C001ECAD8 /* NSDate+Utilities.m */; };
 		2FE4A8E71D568C3C001ECAD8 /* PublicProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E61D568C3C001ECAD8 /* PublicProfileViewController.swift */; };
-		2FE4A8E91D569178001ECAD8 /* SAP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */; };
+		2FE4A8E91D569178001ECAD8 /* SAP-Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E81D569178001ECAD8 /* SAP-Logo.png */; };
 		2FE4A8EC1D5699D2001ECAD8 /* Plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */; };
 		2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */; };
 		2FE4A8F01D56AF32001ECAD8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */; };
@@ -92,6 +92,7 @@
 		2FE4A90B1D5766F1001ECAD8 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A90A1D5766F1001ECAD8 /* EventDetailViewController.swift */; };
 		2FE4A90E1D5766FE001ECAD8 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A90C1D5766FE001ECAD8 /* HeaderCell.swift */; };
 		2FE4A90F1D5766FE001ECAD8 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A90D1D5766FE001ECAD8 /* HeaderCell.xib */; };
+		2FE4A9111D576A6A001ECAD8 /* SAP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A9101D576A6A001ECAD8 /* SAP_Logo.png */; };
 		3E30D4DB1D56E8E30076E2D2 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E30D4DA1D56E8E30076E2D2 /* CellView.xib */; };
 		3E30D4DD1D56EAE20076E2D2 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E30D4DC1D56EAE20076E2D2 /* CellView.swift */; };
 		3E5D57271D56F3B200E221E0 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D57261D56F3B100E221E0 /* Period.swift */; };
@@ -176,7 +177,7 @@
 		2FE4A8E31D568A2C001ECAD8 /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		2FE4A8E41D568A2C001ECAD8 /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		2FE4A8E61D568C3C001ECAD8 /* PublicProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProfileViewController.swift; sourceTree = "<group>"; };
-		2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAP_Logo.png; sourceTree = "<group>"; };
+		2FE4A8E81D569178001ECAD8 /* SAP-Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SAP-Logo.png"; sourceTree = "<group>"; };
 		2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-512.png"; sourceTree = "<group>"; };
 		2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
 		2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreLocation.framework; sourceTree = "<group>"; };
@@ -188,6 +189,7 @@
 		2FE4A90A1D5766F1001ECAD8 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		2FE4A90C1D5766FE001ECAD8 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		2FE4A90D1D5766FE001ECAD8 /* HeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		2FE4A9101D576A6A001ECAD8 /* SAP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAP_Logo.png; sourceTree = "<group>"; };
 		3E30D4DA1D56E8E30076E2D2 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		3E30D4DC1D56EAE20076E2D2 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		3E5D57261D56F3B100E221E0 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
@@ -376,11 +378,12 @@
 		2FE4A8EA1D56917E001ECAD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2FE4A9101D576A6A001ECAD8 /* SAP_Logo.png */,
 				2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */,
 				2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */,
 				2FE4A8E21D568A2C001ECAD8 /* Count on Us-Bridging-Header.h */,
 				2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */,
-				2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */,
+				2FE4A8E81D569178001ECAD8 /* SAP-Logo.png */,
 				2FE4A8E31D568A2C001ECAD8 /* NSDate+Utilities.h */,
 				2FE4A8E41D568A2C001ECAD8 /* NSDate+Utilities.m */,
 				2FE4A8DE1D5688D8001ECAD8 /* FormerInputAccessoryView.swift */,
@@ -471,11 +474,12 @@
 				2FE4A86A1D566B4A001ECAD8 /* Images.xcassets in Resources */,
 				2FE4A90F1D5766FE001ECAD8 /* HeaderCell.xib in Resources */,
 				2FE4A8BE1D5682BA001ECAD8 /* DividerCell.xib in Resources */,
-				2FE4A8E91D569178001ECAD8 /* SAP_Logo.png in Resources */,
+				2FE4A8E91D569178001ECAD8 /* SAP-Logo.png in Resources */,
 				2FE4A8BA1D5682BA001ECAD8 /* ProfileLabelCell.xib in Resources */,
 				2FE4A8BC1D5682BA001ECAD8 /* EventFeedCell.xib in Resources */,
 				2FE4A8B51D5682BA001ECAD8 /* ProfileFieldCell.xib in Resources */,
 				2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */,
+				2FE4A9111D576A6A001ECAD8 /* SAP_Logo.png in Resources */,
 				2FE4A8B91D5682BA001ECAD8 /* TitleCell.xib in Resources */,
 				2FE4A8B81D5682BA001ECAD8 /* ProfileHeaderCell.xib in Resources */,
 				2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */,

@@ -22,7 +22,7 @@ let DEFAULT_TAB							= 0
 
 
 /* All */
-let SAP_COLOR                           = UIColor(red: 7.0/255, green:67.0/255.0, blue:131.0/255, alpha: 1)
+let SAP_COLOR                           = UIColor(red: 30.0/255, green: 127.0/255, blue:201/255, alpha: 1)
 let OFFICES                             = ["Vancouver, Canada"]
 let PF_CREATEDAT                        = "createdAt"               // Date
 let PF_OBJECTID                         = "objectId"                // Pointer to User Class

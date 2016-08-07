@@ -14,6 +14,7 @@ import Agrume
 class MainViewController: FormViewController {
     
     var refreshControl: UIRefreshControl!
+    var firstLoad = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +34,16 @@ class MainViewController: FormViewController {
         refreshControl.addTarget(self, action: #selector(MainViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
         
+        self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
+        self.former.reload()
         configure()
     }
     
     func refresh(sender:AnyObject)
     {
         // Updating your data here...
-        former.removeAll()
+        former.remove(section: 1)
+        former.remove(section: 1)
         self.refreshControl?.endRefreshing()
         configure()
     }
@@ -59,13 +63,12 @@ class MainViewController: FormViewController {
     
     private func configure() {
         
-        self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
-        self.former.reload()
-        
         var invites = [CustomRowFormer<EventFeedCell>]()
+        var organizing = [CustomRowFormer<EventFeedCell>]()
         
         let query = PFQuery(className: "Events")
         query.whereKey("inviteTo", containedIn: [PFUser.currentUser()!])
+        query.whereKey("start", greaterThan: NSDate().dateBySubtractingHours(12))
         query.addAscendingOrder(PF_CREATEDAT)
         query.includeKey("organizer")
         query.includeKey("business")
@@ -73,30 +76,55 @@ class MainViewController: FormViewController {
             if error == nil {
                 if invitations != nil {
                     for invite in invitations! {
-                        print(invite)
-                        invites.append(CustomRowFormer<EventFeedCell>(instantiateType: .Nib(nibName: "EventFeedCell")) {
-                            let user = invite["organizer"] as! PFUser
-                            let business = invite["business"] as? PFObject
-                            $0.title.text = business![PF_BUSINESS_NAME] as? String
-                            $0.timeDay.text = invite["info"] as? String
-                            let startDate = invite["start"] as? NSDate
-                            let endDate = invite["end"] as? NSDate
-                            let interval = endDate!.timeIntervalSinceDate(startDate!)
-                            
-                            $0.location.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
-                            $0.organizer.text = "Organized By: \(user.valueForKey("fullname") as! String)"
-                            $0.attendence.text = "\(invite["confirmed"].count) Confirmed, \(invite["maybe"].count) Maybe"
-                            }.configure {
-                                $0.rowHeight = UITableViewAutomaticDimension
-                            }.onSelected {_ in
-                                let detailVC = EventDetailViewController()
-                                detailVC.event = invite
-                                detailVC.business = invite["business"] as? PFObject
-                                self.navigationController?.pushViewController(detailVC, animated: true)
-                            })
+                        if (invite["organizer"] as! PFUser).objectId! == PFUser.currentUser()!.objectId! {
+                            organizing.append(CustomRowFormer<EventFeedCell>(instantiateType: .Nib(nibName: "EventFeedCell")) {
+                                let user = invite["organizer"] as! PFUser
+                                let business = invite["business"] as? PFObject
+                                $0.title.text = business![PF_BUSINESS_NAME] as? String
+                                $0.timeDay.text = invite["info"] as? String
+                                let startDate = invite["start"] as? NSDate
+                                let endDate = invite["end"] as? NSDate
+                                let interval = endDate!.timeIntervalSinceDate(startDate!)
+                                
+                                $0.location.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
+                                $0.organizer.text = "Organized By: \(user.valueForKey("fullname") as! String)"
+                                $0.attendence.text = "\(invite["confirmed"].count) Confirmed, \(invite["maybe"].count) Maybe"
+                                }.configure {
+                                    $0.rowHeight = UITableViewAutomaticDimension
+                                }.onSelected {_ in
+                                    let detailVC = EventDetailViewController()
+                                    detailVC.event = invite
+                                    detailVC.business = invite["business"] as? PFObject
+                                    self.navigationController?.pushViewController(detailVC, animated: true)
+                                })
+                        } else {
+                            invites.append(CustomRowFormer<EventFeedCell>(instantiateType: .Nib(nibName: "EventFeedCell")) {
+                                let user = invite["organizer"] as! PFUser
+                                let business = invite["business"] as? PFObject
+                                $0.title.text = business![PF_BUSINESS_NAME] as? String
+                                $0.timeDay.text = invite["info"] as? String
+                                let startDate = invite["start"] as? NSDate
+                                let endDate = invite["end"] as? NSDate
+                                let interval = endDate!.timeIntervalSinceDate(startDate!)
+                                
+                                $0.location.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
+                                $0.organizer.text = "Organized By: \(user.valueForKey("fullname") as! String)"
+                                $0.attendence.text = "\(invite["confirmed"].count) Confirmed, \(invite["maybe"].count) Maybe"
+                                }.configure {
+                                    $0.rowHeight = UITableViewAutomaticDimension
+                                }.onSelected {_ in
+                                    let detailVC = EventDetailViewController()
+                                    detailVC.event = invite
+                                    detailVC.business = invite["business"] as? PFObject
+                                    self.navigationController?.pushViewController(detailVC, animated: true)
+                                })
+                        }
+                        
                     }
                     self.former.append(sectionFormer: SectionFormer(rowFormers: invites).set(headerViewFormer: Utilities.createHeader("Invitations")))
+                    self.former.append(sectionFormer: SectionFormer(rowFormers: organizing).set(headerViewFormer: Utilities.createHeader("Organizing")))
                     self.former.reload()
+                    self.firstLoad = false
                 }
             }
         })
@@ -108,8 +136,11 @@ class MainViewController: FormViewController {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        if !firstLoad {
+            refresh(self)
+        }
     }
 
     override func didReceiveMemoryWarning() {

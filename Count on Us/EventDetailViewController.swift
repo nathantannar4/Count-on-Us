@@ -196,7 +196,7 @@ class EventDetailViewController: FormViewController {
                 if self.currentUserStatus != index {
                     
                     self.former.remove(rowFormer: self.newRow)
-                    self.former.reload(sections: NSIndexSet(indexesInRange: NSRange(location: 1, length: 3)))
+                    self.former.reload(sections: NSIndexSet(indexesInRange: NSRange(location: 2, length: 2)))
                     
                     if index == 0 {
                         // User wants to go to the event
