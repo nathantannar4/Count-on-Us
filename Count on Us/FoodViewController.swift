@@ -26,6 +26,9 @@ class FoodViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         title = "Food Discounts"
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
         
+        let listButton   = UIBarButtonItem(title: "List", style: .Plain, target: self, action: #selector(listButtonPressed))
+        navigationItem.rightBarButtonItems = [listButton]
+        
         // Location Services
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -105,6 +108,14 @@ class FoodViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         let region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
         
         mapView.setRegion(region, animated: true)
+    }
+
+    func listButtonPressed(sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let listVC = storyboard.instantiateViewControllerWithIdentifier("ListViewController") as! ListViewController
+        listVC.businesses = self.businesses
+        listVC.className = PF_FOODS_CLASS_NAME
+        self.navigationController?.pushViewController(listVC, animated: true)
     }
 
     

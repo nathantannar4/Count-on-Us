@@ -68,6 +68,9 @@ let PF_GOODS_CLASS_NAME                 = "Goods"                   //  Class na
 /* Events */
 let PF_EVENTS_CLASS_NAME                = "Events"                  // Class Name
 
+/* Foods */
+let PF_FOODS_CLASS_NAME                 = "Foods"                   //  Class name
+
 /* Posts */
 let POSTS_CLASS_NAME                     = "Posts"                   //  Class name
 
