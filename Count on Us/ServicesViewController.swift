@@ -26,25 +26,6 @@ class ServicesViewController: FormViewController, UISearchBarDelegate {
         
         self.searchBar.delegate = self
         
-        // log the queries to the console for now
-//        let query = PFQuery(className: "Food")
-//        query.findObjectsInBackgroundWithBlock{ result, error -> Void in
-//            if error == nil {
-//                if result != nil {
-//                    print(result)
-//                }
-//            }
-//            
-//        }
-        let query = PFQuery(className: "Food")
-        query.findObjectsInBackgroundWithBlock{ result, error -> Void in
-            if error == nil {
-                if result != nil {
-                    print(result)
-                }
-            }
-            
-        }
         
         //configure UI
         title = "Services"
@@ -93,40 +74,21 @@ class ServicesViewController: FormViewController, UISearchBarDelegate {
                         services.append(CustomRowFormer<PostCell>(instantiateType: .Nib(nibName: "PostCell")) {
                             $0.company.text = result["company"] as? String
                             $0.website.text = result["info"] as? String
-                            
-
+                        
                             let startTime = result["startTime"] as? Int
                             let endTime = result["endTime"] as? Int
                             let availability = self.getStringForTimes(startTime!, endTime: endTime!)
-                            
                             $0.deal.text = availability
                             
                             let dealDates = result["dealDay"] as? [String]
                             let datesAbbrev = self.getDayAbbrevations(dealDates!)
                             $0.dealDates.text = datesAbbrev
-                            
-//                            $0.accessoryType = .DisclosureIndicator
-//                            $0.iconView.backgroundColor = SAP_COLOR
-//                            $0.iconView.layer.borderWidth = 2
-//                            $0.iconView.layer.borderColor = SAP_COLOR.CGColor
-//                            let userImageFile = user[PF_USER_PICTURE] as? PFFile
-//                            if userImageFile != nil {
-//                                do {
-//                                    $0.iconView.image = UIImage(data: try userImageFile!.getData())
-//                                } catch _ {}
-//                            }
-//                            $0.titleLabel.textColor = UIColor.blackColor()
-//                            $0.detailLabel.text = user[PF_USER_TITLE] as? String
-//                            $0.detailLabel.textColor = UIColor.grayColor()
+                            //TODO: add color ? 
                             }.configure {
                                 $0.rowHeight = UITableViewAutomaticDimension
                             }
                             .onSelected { [weak self] _ in
-                                //tbd
-//                                self?.former.deselect(true)
-//                                let profileVC = PublicProfileViewController()
-//                                profileVC.user = user
-//                                self?.navigationController?.pushViewController(profileVC, animated: true)
+                                //TODO: navigate to service profile views
                             })
                     }
                     
