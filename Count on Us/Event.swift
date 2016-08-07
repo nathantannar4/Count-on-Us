@@ -30,7 +30,7 @@ final class Event {
     }
     
     func create() {
-        let newEvent = PFObject(className: "Food")
+        let newEvent = PFObject(className: "Events")
         if info != nil {
             newEvent["info"] = info
         } else {
