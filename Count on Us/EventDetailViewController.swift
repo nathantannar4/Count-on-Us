@@ -15,6 +15,7 @@ class EventDetailViewController: FormViewController {
     // MARK: Public
     
     var event: PFObject?
+    var className: String?
     var business: PFObject?
     var confirmedUsernames = [String]()
     var maybeUsernames = [String]()

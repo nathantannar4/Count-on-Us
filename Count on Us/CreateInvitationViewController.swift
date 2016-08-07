@@ -13,6 +13,7 @@ import Parse
 final class CreateInvitationViewController: FormViewController, SelectMultipleViewControllerDelegate {
     
     var business: PFObject!
+    var className: String!
     
     // MARK: Public
     
