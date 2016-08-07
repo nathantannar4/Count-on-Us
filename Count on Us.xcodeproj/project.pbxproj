@@ -82,18 +82,15 @@
 		2FE4A8E91D569178001ECAD8 /* SAP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */; };
 		2FE4A8EC1D5699D2001ECAD8 /* Plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */; };
 		2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */; };
-<<<<<<< HEAD
 		3E30D4DB1D56E8E30076E2D2 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E30D4DA1D56E8E30076E2D2 /* CellView.xib */; };
 		3E30D4DD1D56EAE20076E2D2 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E30D4DC1D56EAE20076E2D2 /* CellView.swift */; };
 		3E5D57271D56F3B200E221E0 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D57261D56F3B100E221E0 /* Period.swift */; };
-=======
 		2FE4A8F01D56AF32001ECAD8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */; };
 		2FE4A8F41D56C61F001ECAD8 /* BusinessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */; };
 		2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */; };
 		2FE4A8FC1D56D1C5001ECAD8 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */; };
 		2FE4A9011D5702D0001ECAD8 /* CreateInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */; };
 		2FE4A9031D570350001ECAD8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A9021D570350001ECAD8 /* Event.swift */; };
->>>>>>> df95e9c25efe024906bfde642dfc489f079d66d9
 		A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */; };
 /* End PBXBuildFile section */
 
@@ -177,18 +174,15 @@
 		2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAP_Logo.png; sourceTree = "<group>"; };
 		2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-512.png"; sourceTree = "<group>"; };
 		2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		3E30D4DA1D56E8E30076E2D2 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		3E30D4DC1D56EAE20076E2D2 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		3E5D57261D56F3B100E221E0 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
-=======
 		2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreLocation.framework; sourceTree = "<group>"; };
 		2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailViewController.swift; sourceTree = "<group>"; };
 		2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		2FE4A9001D5702D0001ECAD8 /* CreateInvitationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateInvitationViewController.swift; sourceTree = "<group>"; };
 		2FE4A9021D570350001ECAD8 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
->>>>>>> df95e9c25efe024906bfde642dfc489f079d66d9
 		7F8997FE80582C753F5B3994 /* Pods-Count on Us.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6FCF480265BA27C3D852B1 /* Pods-Count on Us.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.release.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.release.xcconfig"; sourceTree = "<group>"; };
 		D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Count_on_Us.framework; sourceTree = BUILT_PRODUCTS_DIR; };
