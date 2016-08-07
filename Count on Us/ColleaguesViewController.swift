@@ -21,7 +21,7 @@ class ColleaguesViewController: FormViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         // Configure UI
-        title = "SAP colleagues"
+        title = "Colleagues"
         tableView.contentInset.top = 40
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
         

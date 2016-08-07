@@ -76,6 +76,7 @@ final class RegisterViewController: FormViewController {
         user.password = Profile.sharedInstance.password!
         user.email = Profile.sharedInstance.email!
         user[PF_USER_FULLNAME] = Profile.sharedInstance.name!
+        user[PF_USER_FULLNAME_LOWER] = Profile.sharedInstance.name!.lowercaseString
         user[PF_USER_INFO] = ""
         user[PF_USER_OFFICE] = Profile.sharedInstance.office!
         user[PF_USER_PHONE] = Profile.sharedInstance.phoneNumber!
