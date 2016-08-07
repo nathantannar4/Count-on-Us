@@ -37,7 +37,9 @@ class MainViewController: FormViewController {
         
         self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
         self.former.reload()
-        configure()
+        if PFUser.currentUser() != nil {
+            configure()
+        }
     }
     
     func refresh(sender:AnyObject)
@@ -46,7 +48,9 @@ class MainViewController: FormViewController {
         former.remove(section: 1)
         former.remove(section: 1)
         self.refreshControl?.endRefreshing()
-        configure()
+        if PFUser.currentUser() != nil {
+            configure()
+        }
     }
     
     private lazy var onlyImageRow: LabelRowFormer<ImageCell> = {

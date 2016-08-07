@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navbar.tintColor = UIColor.whiteColor()
         navbar.translucent = false
         self.window?.tintColor = SAP_COLOR
+        
         self.createMenuView()
         
         Parse.setApplicationId("R7Sj5iHhGB4haFQaeT0yGOUQ6GdSIrLHNHnCoLPW", clientKey: "LdlitUyHdlS9LWfRAc2EJZDWBKSYgerxHUosEZPi")

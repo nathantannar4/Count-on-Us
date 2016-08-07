@@ -203,8 +203,8 @@ class EventDetailViewController: FormViewController {
         }
         
         index = 0
-        print(invitedUsers)
         for currentUser in invitedUsernames {
+            print(currentUser)
             if currentUser != currentFullName {
                 invitedRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
                     $0.iconView.backgroundColor = SAP_COLOR
