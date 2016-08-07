@@ -37,6 +37,7 @@ class MainViewController: FormViewController {
                 $0.rowHeight = 200
             }
             .onSelected({ (cell: LabelRowFormer<ImageCell>) in
+                self.former.deselect(true)
                 let agrume = Agrume(image: cell.cell.displayImage.image!)
                     agrume.showFrom(self)
             })
@@ -47,37 +48,37 @@ class MainViewController: FormViewController {
         self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
         self.former.reload()
         
-        var invites = [LabelRowFormer<ProfileImageDetailCell>]()
+        var invites = [CustomRowFormer<EventFeedCell>]()
         
-        let query = PFUser.query()
-        query?.whereKey("sentTo", equalTo: PFUser.currentUser()!)
-        query?.addAscendingOrder(PF_CREATEDAT)
-        query?.includeKey("sentFrom")
-        query?.findObjectsInBackgroundWithBlock({ (invitations: [PFObject]?, error: NSError?) in
+        let query = PFQuery(className: "Events")
+        query.whereKey("inviteTo", containedIn: [PFUser.currentUser()!])
+        query.addAscendingOrder(PF_CREATEDAT)
+        query.includeKey("organizer")
+        query.includeKey("business")
+        query.findObjectsInBackgroundWithBlock({ (invitations: [PFObject]?, error: NSError?) in
             if error == nil {
                 if invitations != nil {
                     for invite in invitations! {
-                        invites.append(LabelRowFormer<ProfileImageDetailCell>(instantiateType: .Nib(nibName: "ProfileImageDetailCell")) {
-                            $0.accessoryType = .DisclosureIndicator
-                            $0.iconView.backgroundColor = SAP_COLOR
-                            $0.iconView.layer.borderWidth = 2
-                            $0.iconView.layer.borderColor = SAP_COLOR.CGColor
-                            /*
-                            let userImageFile = user[PF_USER_PICTURE] as? PFFile
-                            if userImageFile != nil {
-                                do {
-                                    $0.iconView.image = UIImage(data: try userImageFile!.getData())
-                                } catch _ {}
-                            }
- */
-                            $0.titleLabel.textColor = UIColor.blackColor()
-                            $0.detailLabel.text = "Detail"
-                            $0.detailLabel.textColor = UIColor.grayColor()
+                        print(invite)
+                        invites.append(CustomRowFormer<EventFeedCell>(instantiateType: .Nib(nibName: "EventFeedCell")) {
+                            let user = invite["organizer"] as! PFUser
+                            let business = invite["business"] as? PFObject
+                            $0.title.text = business![PF_BUSINESS_NAME] as? String
+                            $0.timeDay.text = invite["info"] as? String
+                            let startDate = invite["start"] as? NSDate
+                            let endDate = invite["end"] as? NSDate
+                            let interval = endDate!.timeIntervalSinceDate(startDate!)
+                            
+                            $0.location.text = "\(startDate!.shortTimeString) on \(startDate!.longDateString) for \((Int(interval) + 1)/60) minutes"
+                            $0.organizer.text = "Organized By: \(user.valueForKey("fullname") as! String)"
+                            $0.attendence.text = "\(invite["confirmed"].count) Confirmed, \(invite["maybe"].count) Maybe"
                             }.configure {
-                                $0.text = "User"
-                                $0.rowHeight = 60
-                            }.onSelected { [weak self] _ in
-                                self?.former.deselect(true)
+                                $0.rowHeight = UITableViewAutomaticDimension
+                            }.onSelected {_ in
+                                let detailVC = EventDetailViewController()
+                                detailVC.event = invite
+                                detailVC.business = invite["business"] as? PFObject
+                                self.navigationController?.pushViewController(detailVC, animated: true)
                             })
                     }
                     self.former.append(sectionFormer: SectionFormer(rowFormers: invites).set(headerViewFormer: Utilities.createHeader("Invitations")))

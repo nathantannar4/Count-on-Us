@@ -62,6 +62,19 @@ public enum DaysOfWeek: Int {
     case Sunday = 1, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 }
 
+/// Default delegate functions
+public extension JTAppleCalendarViewDelegate {
+    func calendar(calendar : JTAppleCalendarView, canSelectDate date : NSDate, cell: JTAppleDayCellView, cellState: CellState)->Bool {return true}
+    func calendar(calendar : JTAppleCalendarView, canDeselectDate date : NSDate, cell: JTAppleDayCellView, cellState: CellState)->Bool {return true}
+    func calendar(calendar : JTAppleCalendarView, didSelectDate date : NSDate, cell: JTAppleDayCellView?, cellState: CellState) {}
+    func calendar(calendar : JTAppleCalendarView, didDeselectDate date : NSDate, cell: JTAppleDayCellView?, cellState: CellState) {}
+    func calendar(calendar : JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: NSDate, endingWithDate endDate: NSDate) {}
+    func calendar(calendar : JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date:NSDate, cellState: CellState) {}
+    func calendar(calendar : JTAppleCalendarView, isAboutToDisplaySectionHeader header: JTAppleHeaderView, date: (startDate: NSDate, endDate: NSDate), identifier: String) {}
+    func calendar(calendar : JTAppleCalendarView, sectionHeaderIdentifierForDate date: (startDate: NSDate, endDate: NSDate)) -> String? {return nil}
+    func calendar(calendar : JTAppleCalendarView, sectionHeaderSizeForDate date: (startDate: NSDate, endDate: NSDate)) -> CGSize {return CGSizeZero}
+}
+
 /// An instance of JTAppleCalendarView (or simply, a calendar view) is a means for displaying and interacting with a gridstyle layout of date-cells
 public class JTAppleCalendarView: UIView {
     /// The amount of buffer space before the first row of date-cells
@@ -183,9 +196,10 @@ public class JTAppleCalendarView: UIView {
     var numberOfItemsPerSection: Int {return MAX_NUMBER_OF_DAYS_IN_WEEK * cachedConfiguration.numberOfRows}
     
     /// Cell inset padding for the x and y axis of every date-cell on the calendar view.
-    public var cellInset: CGPoint = CGPoint(x: 3, y: 3)
-    var cellViewSource: JTAppleCalendarViewSource!
-    var registeredHeaderViews: [JTAppleCalendarViewSource] = []
+    public var cellInset: CGPoint {
+        get {return internalCellInset}
+        set {internalCellInset = newValue}
+    }
     
     /// Enable or disable paging when the calendar view is scrolled
     public var pagingEnabled: Bool = true {
@@ -258,13 +272,19 @@ public class JTAppleCalendarView: UIView {
     
     
     /// Returns an object initialized from data in a given unarchiver. self, initialized using the data in decoder.
-    required public init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder) }
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     /// Prepares the receiver for service after it has been loaded from an Interface Builder archive, or nib file.
-    override public func awakeFromNib() { self.initialSetup() }
+    override public func awakeFromNib() {
+        self.initialSetup()
+    }
     
     /// Lays out subviews.
-    override public func layoutSubviews() { self.frame = super.frame }
+    override public func layoutSubviews() {
+        self.frame = super.frame
+    }
     
     // MARK: Setup
     func initialSetup() {
@@ -302,12 +322,16 @@ public class JTAppleCalendarView: UIView {
         if let attributes = self.calendarView.layoutAttributesForItemAtIndexPath(indexPath) {
             let origin = attributes.frame.origin
             let offset = direction == .Horizontal ? origin.x : origin.y
-            if  self.calendarView.contentOffset.x == offset || (self.pagingEnabled && (indexPath.section ==  currentSectionPage)) {
+            if
+                self.calendarView.contentOffset.x == offset ||
+                    (self.pagingEnabled && (indexPath.section ==  currentSectionPage)){
+                
                 retval = true
             } else {
                 retval = false
             }
         }
+        
         return retval
     }
     
@@ -328,11 +352,13 @@ public class JTAppleCalendarView: UIView {
         } else {
             retval = false
         }
+        
+        
         return retval
     }
     
     func scrollToHeaderInSection(section:Int, triggerScrollToDateDelegate: Bool = false, withAnimation animation: Bool = true, completionHandler: (()->Void)? = nil)  {
-        if registeredHeaderViews.count < 1 { return }
+        if headerViewXibs.count < 1 { return }
         
         self.triggerScrollToDateDelegate = triggerScrollToDateDelegate
         
@@ -375,17 +401,19 @@ public class JTAppleCalendarView: UIView {
         self.calendarView.reloadData()
         
         // Restore the selected index paths
-        for indexPath in theSelectedIndexPaths { restoreSelectionStateForCellAtIndexPath(indexPath) }
+        for indexPath in theSelectedIndexPaths {
+            restoreSelectionStateForCellAtIndexPath(indexPath)
+        }
         
         delayRunOnMainThread(0.0) {
             let scrollToDate = {(date: NSDate) -> Void in
-                if self.registeredHeaderViews.count < 1 {
+                if headerViewXibs.count < 1 {
                     self.scrollToDate(date, triggerScrollToDateDelegate: false, animateScroll: animation, completionHandler: completionHandler)
                 } else {
                     self.scrollToHeaderForDate(date, triggerScrollToDateDelegate: false, withAnimation: animation, completionHandler: completionHandler)
                 }
             }
-            if let validAnchorDate = anchorDate { // If we have a valid anchor date, this means we want to scroll
+            if let validAnchorDate = anchorDate { // If we have a valid anchor dat, this means we want to scroll
                 // This scroll should happen after the reload above
                 scrollToDate(validAnchorDate)
             } else {
@@ -452,7 +480,7 @@ public class JTAppleCalendarView: UIView {
     
     func calendarViewHeaderSizeForSection(section: Int) -> CGSize {
         var retval = CGSizeZero
-        if registeredHeaderViews.count > 0 {
+        if headerViewXibs.count > 0 {
             if let date = dateFromSection(section), size = delegate?.calendar(self, sectionHeaderSizeForDate: date){ retval = size }
         }
         return retval
@@ -522,6 +550,25 @@ public class JTAppleCalendarView: UIView {
             
         }
         return retval
+    }
+    
+    func xibFileValid() -> Bool {
+        // Did you remember to register your JTAppleCalendarView? Because we can't find any"
+        guard let cellViewSource = cellViewSource else { return false }
+        
+        switch cellViewSource {
+        case let .fromXib(xibName):
+            // "your nib file name \(cellViewXibName) could not be loaded)"
+            guard let viewObject = NSBundle.mainBundle().loadNibNamed(xibName, owner: self, options: [:]) where viewObject.count > 0 else { return false }
+            // "xib file class does not conform to the protocol<JTAppleDayCellViewProtocol>"
+            guard let _ = viewObject[0] as? JTAppleDayCellView else { return false }
+            
+            return true
+        default:
+            // todo: check other source cases
+            // asume that developer used right type of class
+            return true
+        }
     }
     
     func scrollToSection(section: Int, triggerScrollToDateDelegate: Bool = false, animateScroll: Bool = true, completionHandler: (()->Void)?) {
@@ -647,7 +694,7 @@ public class JTAppleCalendarView: UIView {
     func pathsFromDates(dates:[NSDate])-> [NSIndexPath] {
         var returnPaths: [NSIndexPath] = []
         for date in dates {
-            if  calendar.startOfDayForDate(date) >= startOfMonthCache && calendar.startOfDayForDate(date) <= endOfMonthCache {
+            if date >= startOfMonthCache && date <= endOfMonthCache {
                 let periodApart = calendar.components(.Month, fromDate: startOfMonthCache, toDate: date, options: [])
                 let monthSectionIndex = periodApart.month
                 let startSectionIndex = monthSectionIndex * numberOfSectionsPerMonth
@@ -784,7 +831,7 @@ extension JTAppleCalendarView: JTAppleCalendarDelegateProtocol {
     func numberOfDaysPerSection() -> Int { return numberOfItemsPerSection }
     
     func referenceSizeForHeaderInSection(section: Int) -> CGSize {
-        if registeredHeaderViews.count < 1 { return CGSizeZero }
+        if headerViewXibs.count < 1 { return CGSizeZero }
         return calendarViewHeaderSizeForSection(section)
     }
     

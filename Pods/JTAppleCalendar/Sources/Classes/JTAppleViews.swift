@@ -6,15 +6,25 @@
 //  Copyright © 2016 OS-Tech. All rights reserved.
 //
 
-/// A day-cell view. The custom day-cells that you create should be a subclass of JTAppleDayCellView
-public class JTAppleDayCellView: UIView, JTAppleViewProtocol {
+
+/// Does nothing for now. New features are on the way.
+public protocol JTAppleDayCellViewProtocol {
 }
 
+/// A day-cell view. The custom day-cells that you create should be a subclass of JTAppleDayCellView
+public class JTAppleDayCellView: UIView, JTAppleDayCellViewProtocol {
+}
+
+
+
+
+
+
+/// Does nothing for now. New features are on the way.
+public protocol JTAppleHeaderViewProtocol {
+}
 
 /// A header view. The custom headerview that you create should be a subclass of JTAppleHeaderView
-public class JTAppleHeaderView: UIView, JTAppleViewProtocol {
-}
-
-protocol JTAppleViewProtocol {
+public class JTAppleHeaderView: UIView, JTAppleHeaderViewProtocol {
 }
 

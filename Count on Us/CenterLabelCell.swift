@@ -28,7 +28,7 @@ final class CenterLabelCell: FormCell, LabelFormableRow {
         
         let titleLabel = UILabel()
         titleLabel.textColor = .formerColor()
-        titleLabel.font = .boldSystemFontOfSize(15)
+        titleLabel.font = .boldSystemFontOfSize(20)
         titleLabel.textAlignment = .Center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(titleLabel)

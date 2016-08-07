@@ -67,47 +67,46 @@ extension JTAppleCalendarView {
     
     /// Let's the calendar know which cell xib to use for the displaying of it's date-cells.
     /// - Parameter name: The name of the xib of your cell design
-    public func registerCellViewXib(fileName name: String) { cellViewSource = JTAppleCalendarViewSource.fromXib(name) }
+    public func registerCellViewXib(fileName name: String) {
+        cellViewSource = JTAppleCallendarCellViewSource.fromXib(name)
+    }
     
     /// Let's the calendar know which cell class to use for the displaying of it's date-cells.
     /// - Parameter name: The class name of your cell design
-    public func registerCellViewClass(fileName name: String) { cellViewSource = JTAppleCalendarViewSource.fromClassName(name) }
+    public func registerCellViewClass(fileName name: String) {
+        cellViewSource = JTAppleCallendarCellViewSource.fromClassName(name)
+    }
     
     /// Let's the calendar know which cell class to use for the displaying of it's date-cells.
     /// - Parameter name: The type of your cell design
-    public func registerCellViewClass(cellClass cellClass: AnyClass) { cellViewSource = JTAppleCalendarViewSource.fromType(cellClass) }
+    public func registerCellViewClass(cellClass cellClass: AnyClass) {
+        cellViewSource = JTAppleCallendarCellViewSource.fromType(cellClass)
+    }
+    
     
     /// Register header views with the calender. This needs to be done before the view can be displayed
     /// - Parameter fileNames: A dictionary containing [headerViewNames:HeaderviewSizes]
     public func registerHeaderViewXibs(fileNames headerViewXibNames: [String]) {
-        registeredHeaderViews.removeAll() // remove the already registered xib files if the user re-registers again.
+        headerViewXibs.removeAll() // remove the already registered xib files if the user re-registers again.
+        
+        if headerViewXibNames.count < 1 {
+            return
+        }
+
         for headerViewXibName in headerViewXibNames {
-            registeredHeaderViews.append(JTAppleCalendarViewSource.fromXib(headerViewXibName))
+            let viewObject = NSBundle.mainBundle().loadNibNamed(headerViewXibName, owner: self, options: [:])
+            assert(viewObject.count > 0, "your nib file name \(headerViewXibName) could not be loaded)")
+            
+            guard viewObject[0] is JTAppleHeaderView else {
+                assert(false, "xib file class does not conform to the protocol<JTAppleHeaderViewProtocol>")
+                return
+            }
+            
+            headerViewXibs.append(headerViewXibName)
+            
             self.calendarView.registerClass(JTAppleCollectionReusableView.self,
                                             forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                             withReuseIdentifier: headerViewXibName)
-        }
-    }
-    /// Register header views with the calender. This needs to be done before the view can be displayed
-    /// - Parameter fileNames: A dictionary containing [headerViewNames:HeaderviewSizes]
-    public func registerHeaderViewClass(fileNames headerViewClassNames: [String]) {
-        registeredHeaderViews.removeAll() // remove the already registered xib files if the user re-registers again.
-        for headerViewClassName in headerViewClassNames {
-            registeredHeaderViews.append(JTAppleCalendarViewSource.fromClassName(headerViewClassName))
-            self.calendarView.registerClass(JTAppleCollectionReusableView.self,
-                                            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                            withReuseIdentifier: headerViewClassName)
-        }
-    }
-    /// Register header views with the calender. This needs to be done before the view can be displayed
-    /// - Parameter fileNames: A dictionary containing [headerViewNames:HeaderviewSizes]
-    public func registerHeaderViewClass(headerClass headerViewClasses: [AnyClass]) {
-        registeredHeaderViews.removeAll() // remove the already registered xib files if the user re-registers again.
-        for aClass in headerViewClasses {
-            registeredHeaderViews.append(JTAppleCalendarViewSource.fromType(aClass))
-            self.calendarView.registerClass(JTAppleCollectionReusableView.self,
-                                            forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                            withReuseIdentifier: aClass.description())
         }
     }
     
@@ -222,28 +221,25 @@ extension JTAppleCalendarView {
     
     /// Scrolls the calendar view to the next section view. It will execute a completion handler at the end of scroll animation if provided.
     /// - Paramater animateScroll: Bool indicating if animation should be enabled
-    /// - Parameter triggerScrollToDateDelegate: Trigger delegate if set to true
     /// - Parameter completionHandler: A completion handler that will be executed at the end of the scroll animation
     public func scrollToNextSegment(triggerScrollToDateDelegate: Bool = false, animateScroll: Bool = true, completionHandler:(()->Void)? = nil) {
         let page = currentSectionPage + 1
         if page < monthInfo.count {
-            scrollToSection(page, triggerScrollToDateDelegate: triggerScrollToDateDelegate, animateScroll: animateScroll, completionHandler: completionHandler)
+            scrollToSection(page,  animateScroll: animateScroll, completionHandler: completionHandler)
         }
     }
     /// Scrolls the calendar view to the previous section view. It will execute a completion handler at the end of scroll animation if provided.
-    /// - Parameter triggerScrollToDateDelegate: Trigger delegate if set to true
     /// - Paramater animateScroll: Bool indicating if animation should be enabled
     /// - Parameter completionHandler: A completion handler that will be executed at the end of the scroll animation
     public func scrollToPreviousSegment(triggerScrollToDateDelegate: Bool = false, animateScroll: Bool = true, completionHandler:(()->Void)? = nil) {
         let page = currentSectionPage - 1
         if page > -1 {
-            scrollToSection(page, triggerScrollToDateDelegate: triggerScrollToDateDelegate, animateScroll: animateScroll, completionHandler: completionHandler)
+            scrollToSection(page, animateScroll: animateScroll, completionHandler: completionHandler)
         }
     }
 
     /// Scrolls the calendar view to the start of a section view containing a specified date.
     /// - Paramater date: The calendar view will scroll to a date-cell containing this date if it exists
-    /// - Parameter triggerScrollToDateDelegate: Trigger delegate if set to true
     /// - Paramater animateScroll: Bool indicating if animation should be enabled
     /// - Paramater preferredScrollPositionIndex: Integer indicating the end scroll position on the screen. This value indicates column number for Horizontal scrolling and row number for a vertical scrolling calendar
     /// - Parameter completionHandler: A completion handler that will be executed at the end of the scroll animation
@@ -260,7 +256,9 @@ extension JTAppleCalendarView {
                 self.scrollInProgress = false
                 return
             }
+            
             let retrievedPathsFromDates = self.pathsFromDates([date])
+            
             if retrievedPathsFromDates.count > 0 {
                 let sectionIndexPath =  self.pathsFromDates([date])[0]
                 var position: UICollectionViewScrollPosition = self.direction == .Horizontal ? .Left : .Top
@@ -288,6 +286,7 @@ extension JTAppleCalendarView {
                     // regular movement
                     self.calendarView.scrollToItemAtIndexPath(iPath, atScrollPosition: position, animated: animateScroll)
                     
+                    
                     if animateScroll {
                         if let check = self.calendarOffsetIsAlreadyAtScrollPosition(forIndexPath: iPath) where check == true {
                                 self.scrollViewDidEndScrollingAnimation(self.calendarView)
@@ -298,7 +297,7 @@ extension JTAppleCalendarView {
                 }
                 
                 if self.pagingEnabled {
-                    if self.registeredHeaderViews.count > 0 {
+                    if headerViewXibs.count > 0 {
                         // If both paging and header is on, then scroll to the actual date
                         // If direction is vertical and user has a custom size that is at least the size of the collectionview. 
                         // If this check is not done, it will scroll to header, and have white space at bottom because view is smaller due to small custom user itemSize
@@ -324,8 +323,6 @@ extension JTAppleCalendarView {
                         self.scrollInProgress = false
                     }
                 })
-            } else {
-                self.scrollInProgress = false
             }
         })
     }

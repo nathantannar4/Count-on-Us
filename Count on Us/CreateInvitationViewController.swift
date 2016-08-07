@@ -25,7 +25,6 @@ final class CreateInvitationViewController: FormViewController, SelectMultipleVi
     
     func sendButtonPressed(sender: AnyObject) {
         if Event.sharedInstance.inviteTo.count > 0 {
-            Event.sharedInstance.location = business[PF_BUSINESS_NAME] as? String
             Event.sharedInstance.business = business
             Event.sharedInstance.create()
             self.navigationController?.popViewControllerAnimated(true)
