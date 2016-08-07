@@ -82,6 +82,10 @@
 		2FE4A8E91D569178001ECAD8 /* SAP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */; };
 		2FE4A8EC1D5699D2001ECAD8 /* Plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */; };
 		2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */; };
+		2FE4A8F01D56AF32001ECAD8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */; };
+		2FE4A8F41D56C61F001ECAD8 /* BusinessDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */; };
+		2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */; };
+		2FE4A8FC1D56D1C5001ECAD8 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */; };
 		A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +169,10 @@
 		2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAP_Logo.png; sourceTree = "<group>"; };
 		2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-512.png"; sourceTree = "<group>"; };
 		2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
+		2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CoreLocation.framework; sourceTree = "<group>"; };
+		2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailViewController.swift; sourceTree = "<group>"; };
+		2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
+		2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		7F8997FE80582C753F5B3994 /* Pods-Count on Us.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6FCF480265BA27C3D852B1 /* Pods-Count on Us.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.release.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.release.xcconfig"; sourceTree = "<group>"; };
 		D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Count_on_Us.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE4A8F01D56AF32001ECAD8 /* CoreLocation.framework in Frameworks */,
 				A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +230,7 @@
 				2FE4A86D1D5678C3001ECAD8 /* Menu View */,
 				2FE4A8481D566B21001ECAD8 /* MainViewController.swift */,
 				2FE4A86E1D567989001ECAD8 /* FoodViewController.swift */,
+				2FE4A8F31D56C61F001ECAD8 /* BusinessDetailViewController.swift */,
 				2FE4A8D61D56838A001ECAD8 /* ServicesViewController.swift */,
 				2FE4A8D81D5683AA001ECAD8 /* GoodsViewController.swift */,
 				2FE4A8DA1D5683BB001ECAD8 /* ColleaguesViewController.swift */,
@@ -309,6 +319,7 @@
 				2FE4A89B1D5682BA001ECAD8 /* ProfileImageCell.xib */,
 				2FE4A89C1D5682BA001ECAD8 /* ProfileImageDetailCell.xib */,
 				2FE4A89D1D5682BA001ECAD8 /* ProfileHeaderCell.xib */,
+				2FE4A8F91D56D0B5001ECAD8 /* MapCell.xib */,
 				2FE4A89E1D5682BA001ECAD8 /* TitleCell.xib */,
 				2FE4A89F1D5682BA001ECAD8 /* ProfileLabelCell.xib */,
 				2FE4A8A01D5682BA001ECAD8 /* PostCell.xib */,
@@ -317,6 +328,7 @@
 				2FE4A8A31D5682BA001ECAD8 /* DividerCell.xib */,
 				2FE4A8A41D5682BA001ECAD8 /* ImageCell.xib */,
 				2FE4A8A61D5682BA001ECAD8 /* ImageCell.swift */,
+				2FE4A8FB1D56D1C5001ECAD8 /* MapCell.swift */,
 				2FE4A8A71D5682BA001ECAD8 /* EventFeedCell.swift */,
 				2FE4A8A81D5682BA001ECAD8 /* TitleCell.swift */,
 				2FE4A8A91D5682BA001ECAD8 /* DividerCell.swift */,
@@ -337,6 +349,7 @@
 		2FE4A8EA1D56917E001ECAD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2FE4A8EF1D56AF32001ECAD8 /* CoreLocation.framework */,
 				2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */,
 				2FE4A8E21D568A2C001ECAD8 /* Count on Us-Bridging-Header.h */,
 				2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */,
@@ -433,6 +446,7 @@
 				2FE4A8BA1D5682BA001ECAD8 /* ProfileLabelCell.xib in Resources */,
 				2FE4A8BC1D5682BA001ECAD8 /* EventFeedCell.xib in Resources */,
 				2FE4A8B51D5682BA001ECAD8 /* ProfileFieldCell.xib in Resources */,
+				2FE4A8FA1D56D0B5001ECAD8 /* MapCell.xib in Resources */,
 				2FE4A8B91D5682BA001ECAD8 /* TitleCell.xib in Resources */,
 				2FE4A8B81D5682BA001ECAD8 /* ProfileHeaderCell.xib in Resources */,
 				2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */,
@@ -517,6 +531,7 @@
 				2FE4A8E51D568A2C001ECAD8 /* NSDate+Utilities.m in Sources */,
 				2FE4A8971D56806D001ECAD8 /* EditProfileViewController.swift in Sources */,
 				2FE4A8C11D5682BA001ECAD8 /* ImageCell.swift in Sources */,
+				2FE4A8F41D56C61F001ECAD8 /* BusinessDetailViewController.swift in Sources */,
 				2FE4A8C51D5682BA001ECAD8 /* PostCell.swift in Sources */,
 				2FE4A8781D5679E2001ECAD8 /* MessagesCell.swift in Sources */,
 				2FE4A8CA1D5682BA001ECAD8 /* ProfileFieldCell.swift in Sources */,
@@ -542,6 +557,7 @@
 				2FE4A8C91D5682BA001ECAD8 /* DynamicHeightCell.swift in Sources */,
 				2FE4A86F1D567989001ECAD8 /* FoodViewController.swift in Sources */,
 				2FE4A8D31D56831C001ECAD8 /* WelcomeViewController.swift in Sources */,
+				2FE4A8FC1D56D1C5001ECAD8 /* MapCell.swift in Sources */,
 				2FE4A88F1D567A38001ECAD8 /* PushNotification.swift in Sources */,
 				2FE4A8661D566B34001ECAD8 /* DataTableViewCell.swift in Sources */,
 				2FE4A8761D5679E2001ECAD8 /* ChatViewController.swift in Sources */,
@@ -658,6 +674,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Count",
+					on,
+					Us,
+				);
 				INFOPLIST_FILE = "Count on Us/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -674,6 +696,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Count",
+					on,
+					Us,
+				);
 				INFOPLIST_FILE = "Count on Us/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

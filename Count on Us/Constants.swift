@@ -46,8 +46,18 @@ let PF_USER_TITLE                       = "title"                   //	String
 let PF_USER_OFFICE                      = "office"                  //	String
 let PF_USER_INFO                        = "info"                    //	String
 
-/* Posts */
-let POSTS_CLASS_NAME                     = "Posts"                   //  Class name
+/* Business */
+let PF_BUSINESS_NAME                    = "company"                 //  String
+let PF_BUSINESS_WEBSITE                 = "companyWebsite"          //  String
+let PF_BUSINESS_DEALDAY                 = "dealDay"                 //  Array
+let PF_BUSINESS_STARTTIME               = "startTime"               //  Number
+let PF_BUSINESS_ENDTIME                 = "endTime"                 //  Number
+let PF_BUSINESS_PHONE                   = "phoneNumber"             //  String
+let PF_BUSINESS_REVIEW                  = "reviewLink"              //  String
+let PF_BUSINESS_LAT                     = "latitude"                //  String
+let PF_BUSINESS_LONG                    = "longitude"               //  String
+let PF_BUSINESS_INFO                    = "info"                    //  String
+let PF_BUSINESS_MORE_INFO               = "additionalInfo"          //  String
 
 /* Chat */
 let PF_CHAT_CLASS_NAME					= "Chat"					//	Class name
