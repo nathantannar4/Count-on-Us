@@ -19,6 +19,7 @@ class MessagesViewController: UITableViewController, UIActionSheetDelegate, Sele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MessagesViewController.cleanup), name: NOTIFICATION_USER_LOGGED_OUT, object: nil)
         

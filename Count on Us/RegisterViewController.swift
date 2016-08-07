@@ -136,7 +136,7 @@ final class RegisterViewController: FormViewController {
                 Profile.sharedInstance.name = $0
         }
         let locationRow = InlinePickerRowFormer<ProfileLabelCell, String>(instantiateType: .Nib(nibName: "ProfileLabelCell")) {
-            $0.titleLabel.text = "School"
+            $0.titleLabel.text = "Office"
             }.configure {
                 $0.pickerItems = OFFICES.map {
                     InlinePickerItem(title: $0)

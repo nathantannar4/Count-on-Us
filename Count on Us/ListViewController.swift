@@ -23,7 +23,8 @@ class ListViewController: FormViewController, UISearchBarDelegate {
     
         self.searchBar?.delegate = self
         title = "\(self.className) Discounts"
-        tableView.contentInset.top = 80
+        self.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height - 100)
+        tableView.contentInset.top = 40
         
         SVProgressHUD.showWithStatus("Loading available \(self.className)...")
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {() -> Void in
@@ -38,6 +39,18 @@ class ListViewController: FormViewController, UISearchBarDelegate {
     private func getDayAbbrevations(days: [String]) -> String {
         if days.count == 7 {
             return "Everyday"
+        }
+        else if days.count == 5 &&
+            days.contains("Monday") &&
+            days.contains("Tuesday") &&
+            days.contains("Wednesday") &&
+            days.contains("Thursday") &&
+            days.contains("Friday") {
+            return "Weekdays"
+        } else if days.count == 2 &&
+            days.contains("Saturday") &&
+            days.contains("Sunday") {
+            return "Weekends"
         }
         
         var daysAbbrevs = [String]()

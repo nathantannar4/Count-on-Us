@@ -16,8 +16,6 @@ class StatsViewController: UIViewController, PNChartDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(business)
-        
         // Do any additional setup after loading the view.
         let ChartLabel:UILabel = UILabel(frame: CGRectMake(0, 0, self.view.frame.width, 40))
         
@@ -28,11 +26,21 @@ class StatsViewController: UIViewController, PNChartDelegate {
         ChartLabel.text = "Visits Per Day"
         
         let lineChart: PNLineChart = PNLineChart(frame: CGRectMake(0, 40, self.view.frame.width, 400.0))
-        lineChart.yLabelFormat = "%1.1f"
+        lineChart.yLabelFormat = "%1.0f"
         lineChart.showLabel = true
         lineChart.backgroundColor = UIColor.clearColor()
-        
-        lineChart.xLabels = ["TEST", "TEST2"]
+        var dateLabels = [String]()
+        let dates = business["dayStats"] as! [NSDate]
+        var index = 0
+        while index < dates.count {
+            if index % 10 == 0 {
+                dateLabels.append("\(dates[index].month) \(dates[index].day)")
+            } else {
+                dateLabels.append("")
+            }
+            index += 1
+        }
+        lineChart.xLabels = dateLabels
         lineChart.showCoordinateAxis = true
         lineChart.delegate = self
         

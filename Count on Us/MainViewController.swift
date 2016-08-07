@@ -15,37 +15,10 @@ class MainViewController: FormViewController {
     
     var refreshControl: UIRefreshControl!
     var firstLoad = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let query = PFQuery(className: "Food")
-        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
-            if error == nil {
-                for object in objects! {
     
-                    var dayStats = [NSDate]()
-                    var dayStatsCount = [CGFloat]()
-                    for date in 1...30 {
-                        dayStats.append(NSDate().dateBySubtractingDays(date))
-                        dayStatsCount.append(CGFloat(Int(arc4random_uniform(50))))
-                    }
-                    object["dayStats"] = dayStats
-                    object["dayStatsCount"] = dayStatsCount
-                    object.saveInBackgroundWithBlock({ (sucess: Bool, error: NSError?) in
-                        if error != nil {
-                            print(error)
-                        }
-                    })
-                }
-            }
-        }
-        
-        
-        
-        
-        
-        
         
         // Configure Navbar
         title = "Home"
@@ -64,7 +37,9 @@ class MainViewController: FormViewController {
         
         self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
         self.former.reload()
-        configure()
+        if PFUser.currentUser() != nil {
+            configure()
+        }
     }
     
     func refresh(sender:AnyObject)
@@ -73,7 +48,9 @@ class MainViewController: FormViewController {
         former.remove(section: 1)
         former.remove(section: 1)
         self.refreshControl?.endRefreshing()
-        configure()
+        if PFUser.currentUser() != nil {
+            configure()
+        }
     }
     
     private lazy var onlyImageRow: LabelRowFormer<ImageCell> = {
@@ -174,6 +151,5 @@ class MainViewController: FormViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
 }
 

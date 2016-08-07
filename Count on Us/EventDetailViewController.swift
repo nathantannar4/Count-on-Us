@@ -18,9 +18,11 @@ class EventDetailViewController: FormViewController {
     var business: PFObject?
     var confirmedUsernames = [String]()
     var maybeUsernames = [String]()
+    var invitedUsernames = [String]()
     var currentUserStatus = 2
     var confirmedUsers = [PFUser]()
     var maybeUsers = [PFUser]()
+    var invitedUsers = [PFUser]()
     
     // MARK: Public
     
@@ -37,6 +39,7 @@ class EventDetailViewController: FormViewController {
         
         confirmedUsers = event?.objectForKey("confirmed") as! [PFUser]
         maybeUsers = event?.objectForKey("maybe") as! [PFUser]
+        invitedUsers = event?.objectForKey("maybe") as! [PFUser]
         
         for confirmed in confirmedUsers {
             let userQuery = PFUser.query()
@@ -63,6 +66,20 @@ class EventDetailViewController: FormViewController {
             }
             
         }
+        
+        for invited in invitedUsers {
+            let userQuery = PFUser.query()
+            userQuery?.whereKey("objectId", equalTo: invited.objectId!)
+            do {
+                let userFound = try userQuery?.findObjects().first
+                invitedUsernames.append((userFound?.valueForKey("fullname") as? String)!)
+                
+            } catch _ {
+                print("Error in finding User")
+            }
+            
+        }
+        
         if confirmedUsernames.contains((PFUser.currentUser()?.valueForKey("fullname") as? String)!) {
             currentUserStatus = 0
         }
@@ -144,6 +161,7 @@ class EventDetailViewController: FormViewController {
         
         var confirmedRows = [LabelRowFormer<ProfileImageCell>]()
         var maybeRows = [LabelRowFormer<ProfileImageCell>]()
+        var invitedRows = [LabelRowFormer<ProfileImageCell>]()
         
         let currentFullName = PFUser.currentUser()?.valueForKey("fullname") as? String
         var index = 0
@@ -183,8 +201,27 @@ class EventDetailViewController: FormViewController {
             }
             index += 1
         }
-
         
+        index = 0
+        for currentUser in invitedUsernames {
+            print(currentUser)
+            if currentUser != currentFullName {
+                invitedRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
+                    $0.iconView.backgroundColor = SAP_COLOR
+                    $0.titleLabel.textColor = UIColor.blackColor()
+                    }.configure {
+                        $0.text = currentUser
+                        $0.rowHeight = 60
+                    }.onSelected { [weak self] _ in
+                        self?.former.deselect(true)
+                        let profileVC = PublicProfileViewController()
+                        profileVC.user = self!.maybeUsers[index]
+                        self?.navigationController?.pushViewController(profileVC, animated: true)
+                    })
+            }
+            index += 1
+        }
+
         let choiceRow = SegmentedRowFormer<FormSegmentedCell>() {
             $0.titleLabel.text = "Attend this event?"
             $0.formSegmented().tintColor = SAP_COLOR
@@ -268,6 +305,7 @@ class EventDetailViewController: FormViewController {
         self.former.append(sectionFormer: SectionFormer(rowFormer: businessRow, choiceRow))
         self.former.append(sectionFormer: SectionFormer(rowFormers: confirmedRows).set(headerViewFormer: Utilities.createHeader("Confirmed")))
         self.former.append(sectionFormer: SectionFormer(rowFormers: maybeRows).set(headerViewFormer: Utilities.createHeader("Maybe")))
+        self.former.append(sectionFormer: SectionFormer(rowFormers: invitedRows).set(headerViewFormer: Utilities.createHeader("Colleagues Invited")))
         
         self.former.reload()
         

@@ -39,6 +39,7 @@ class FoodViewController: UIViewController, MKMapViewDelegate, CLLocationManager
         mapView.showsUserLocation = true
         
         let query = PFQuery(className: "Food")
+        query.addAscendingOrder(PF_BUSINESS_LOWERCASE)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) in
             if error == nil {
                 for object in objects! {
