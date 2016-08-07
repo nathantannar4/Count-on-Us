@@ -15,6 +15,7 @@ class EventDetailViewController: FormViewController {
     // MARK: Public
     
     var event: PFObject?
+    var className: String?
     var business: PFObject?
     var confirmedUsernames = [String]()
     var maybeUsernames = [String]()
@@ -139,9 +140,6 @@ class EventDetailViewController: FormViewController {
             $0.rowHeight = 60
         }.onSelected { [weak self] _ in
             self?.former.deselect(true)
-            let profileVC = PublicProfileViewController()
-            profileVC.user = PFUser.currentUser()!
-            self?.navigationController?.pushViewController(profileVC, animated: true)
         }
     }()
     
@@ -171,7 +169,7 @@ class EventDetailViewController: FormViewController {
         var invitedRows = [LabelRowFormer<ProfileImageCell>]()
         
         let currentFullName = PFUser.currentUser()?.valueForKey("fullname") as? String
-        var index = 0
+        
         for currentUser in confirmedUsernames {
             if currentUser != currentFullName {
                 confirmedRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
@@ -182,16 +180,10 @@ class EventDetailViewController: FormViewController {
                         $0.rowHeight = 60
                     }.onSelected { [weak self] _ in
                         self?.former.deselect(true)
-                        let profileVC = PublicProfileViewController()
-                        profileVC.user = self!.confirmedUsers[index]
-                        self?.navigationController?.pushViewController(profileVC, animated: true)
                     })
-                
-                index += 1
             }
         }
         
-        index = 0
         for currentUser in maybeUsernames {
             if currentUser != currentFullName {
                 maybeRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
@@ -202,17 +194,10 @@ class EventDetailViewController: FormViewController {
                         $0.rowHeight = 60
                     }.onSelected { [weak self] _ in
                         self?.former.deselect(true)
-                        let profileVC = PublicProfileViewController()
-                        print(self!.maybeUsers[index])
-                        profileVC.user = self!.maybeUsers[index]
-                        self?.navigationController?.pushViewController(profileVC, animated: true)
-
                     })
-                index += 1
             }
         }
         
-        index = 0
         for currentUser in invitedUsernames {
             if currentUser != currentFullName && !confirmedUsernames.contains(currentUser) && !maybeUsernames.contains(currentUser) {
                 invitedRows.append(LabelRowFormer<ProfileImageCell>(instantiateType: .Nib(nibName: "ProfileImageCell")) {
@@ -223,13 +208,7 @@ class EventDetailViewController: FormViewController {
                         $0.rowHeight = 60
                     }.onSelected { [weak self] _ in
                         self?.former.deselect(true)
-                        let profileVC = PublicProfileViewController()
-                        profileVC.user = self!.invitedUsers[index]
-                        self?.navigationController?.pushViewController(profileVC, animated: true)
-
                     })
-                
-                index += 1
             }
         }
 
