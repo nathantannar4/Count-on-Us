@@ -82,6 +82,9 @@
 		2FE4A8E91D569178001ECAD8 /* SAP_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */; };
 		2FE4A8EC1D5699D2001ECAD8 /* Plus-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */; };
 		2FE4A8EE1D56A586001ECAD8 /* profile_blank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */; };
+		3E30D4DB1D56E8E30076E2D2 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E30D4DA1D56E8E30076E2D2 /* CellView.xib */; };
+		3E30D4DD1D56EAE20076E2D2 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E30D4DC1D56EAE20076E2D2 /* CellView.swift */; };
+		3E5D57271D56F3B200E221E0 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D57261D56F3B100E221E0 /* Period.swift */; };
 		A3B4B778093F0192CEF15285 /* Pods_Count_on_Us.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */; };
 /* End PBXBuildFile section */
 
@@ -165,6 +168,9 @@
 		2FE4A8E81D569178001ECAD8 /* SAP_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SAP_Logo.png; sourceTree = "<group>"; };
 		2FE4A8EB1D5699D2001ECAD8 /* Plus-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-512.png"; sourceTree = "<group>"; };
 		2FE4A8ED1D56A586001ECAD8 /* profile_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_blank@2x.png"; sourceTree = "<group>"; };
+		3E30D4DA1D56E8E30076E2D2 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
+		3E30D4DC1D56EAE20076E2D2 /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
+		3E5D57261D56F3B100E221E0 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		7F8997FE80582C753F5B3994 /* Pods-Count on Us.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6FCF480265BA27C3D852B1 /* Pods-Count on Us.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Count on Us.release.xcconfig"; path = "Pods/Target Support Files/Pods-Count on Us/Pods-Count on Us.release.xcconfig"; sourceTree = "<group>"; };
 		D46E74DEE37DF3BC199B9EEC /* Pods_Count_on_Us.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Count_on_Us.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				2FE4A8601D566B34001ECAD8 /* BaseTableViewCell.swift */,
+				3E30D4DA1D56E8E30076E2D2 /* CellView.xib */,
 				2FE4A8611D566B34001ECAD8 /* DataTableViewCell.swift */,
 				2FE4A8621D566B34001ECAD8 /* DataTableViewCell.xib */,
 				2FE4A8991D5682BA001ECAD8 /* DynamicHeightCell.xib */,
@@ -330,6 +337,8 @@
 				2FE4A8B11D5682BA001ECAD8 /* ProfileImageDetailCell.swift */,
 				2FE4A8B21D5682BA001ECAD8 /* ProfileHeaderCell.swift */,
 				2FE4A8B31D5682BA001ECAD8 /* ProfileLabelCell.swift */,
+				3E30D4DC1D56EAE20076E2D2 /* CellView.swift */,
+				3E5D57261D56F3B100E221E0 /* Period.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E30D4DB1D56E8E30076E2D2 /* CellView.xib in Resources */,
 				2FE4A8BF1D5682BA001ECAD8 /* ImageCell.xib in Resources */,
 				2FE4A8B41D5682BA001ECAD8 /* DynamicHeightCell.xib in Resources */,
 				2FE4A8B61D5682BA001ECAD8 /* ProfileImageCell.xib in Resources */,
@@ -552,6 +562,8 @@
 				2FE4A8D51D56831C001ECAD8 /* RegisterViewController.swift in Sources */,
 				2FE4A8CC1D5682BA001ECAD8 /* ProfileImageDetailCell.swift in Sources */,
 				2FE4A87E1D5679FF001ECAD8 /* Constants.swift in Sources */,
+				3E5D57271D56F3B200E221E0 /* Period.swift in Sources */,
+				3E30D4DD1D56EAE20076E2D2 /* CellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
