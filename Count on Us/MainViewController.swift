@@ -10,14 +10,12 @@ import UIKit
 import Parse
 import Former
 import Agrume
-import MVCarouselCollectionView
 
-class MainViewController: FormViewController, MVCarouselCollectionViewDelegate {
+class MainViewController: FormViewController {
     
     var refreshControl: UIRefreshControl!
     var firstLoad = true
-    var collectionView : MVCarouselCollectionView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -40,7 +38,6 @@ class MainViewController: FormViewController, MVCarouselCollectionViewDelegate {
         self.former.append(sectionFormer: SectionFormer(rowFormer: onlyImageRow))
         self.former.reload()
         configure()
-        configureCollectionView()
     }
     
     func refresh(sender:AnyObject)
@@ -150,34 +147,5 @@ class MainViewController: FormViewController, MVCarouselCollectionViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    func configureCollectionView() {
-        collectionView.frame = CGRectMake(0, 100, self.view.frame.width, 300)
-        collectionView.selectDelegate = self
-        collectionView.imagePaths = [ "SAP_Logo.png", "SAP-Logo.png" ]
-        collectionView.commonImageLoader = self.imageLoader
-        collectionView.maximumZoom = 2.0
-        collectionView.reloadData()
-    }
-    
-    let imageLoader: ((imageView: UIImageView, imagePath : String, completion: (newImage: Bool) -> ()) -> ()) = {
-        (imageView: UIImageView, imagePath : String, completion: (newImage: Bool) -> ()) in
-        
-        imageView.image = UIImage(named:imagePath)
-        completion(newImage: imageView.image != nil)
-    }
-
-    
-    // MARK:  MVCarouselCollectionViewDelegate
-    func carousel(carousel: MVCarouselCollectionView, didSelectCellAtIndexPath indexPath: NSIndexPath) {
-        
-        // Do something with cell selection
-    }
-    
-    func carousel(carousel: MVCarouselCollectionView, didScrollToCellAtIndex cellIndex : NSInteger) {
-        
-        // Page changed, can use this to update page control
-    }
-
 }
 
