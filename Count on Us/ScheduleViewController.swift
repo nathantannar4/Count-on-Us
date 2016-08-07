@@ -36,18 +36,16 @@ class ScheduleViewController: UIViewController {
         calendarView.dataSource = self
         calendarView.delegate = self
         calendarView.cellInset = CGPoint(x: 0, y: 0)
-        calendarView.firstDayOfWeek = .Monday
-        calendarView.allowsMultipleSelection = true
-        configure()
+        calendarView.firstDayOfWeek = .Sunday
         
-        
-//        AttendingArray.append(NSDate())
-//        InvitedArray.append(NSDate().dateByAddingDays(1))
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         calendarView.scrollToDate(today)
+        AttendingArray.removeAll()
+        InvitedArray.removeAll()
+        configure()
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,6 +71,8 @@ class ScheduleViewController: UIViewController {
                             self.InvitedArray.append(eventDate!)
                         }
                     }
+                    self.calendarView.reloadData()
+                    
                 }
             }
         })
