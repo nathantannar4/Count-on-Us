@@ -7,14 +7,26 @@
 //
 
 import UIKit
+import Parse
+import Former
+import SVProgressHUD
 
-class ServicesViewController: UIViewController {
-
+class ServicesViewController: FormViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Configure Navbar
         self.addLeftBarButtonWithImage(UIImage(named: "ic_menu_black_24dp")!)
+        
+        // Configure UI
+        title = "Partner Services"
+        tableView.contentInset.top = 40
+        
+        self.searchBar.delegate = self
+
     }
     
     override func viewWillAppear(animated: Bool) {
