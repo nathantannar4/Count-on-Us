@@ -13,11 +13,10 @@ final class PostCell: UITableViewCell, LabelFormableRow {
     
     // MARK: Public
     
-    @IBOutlet var username: UILabel!
-    @IBOutlet var info: UILabel!
-    @IBOutlet var school: UILabel!
-    @IBOutlet var date: UILabel!
-    @IBOutlet var replies: UILabel!
+    @IBOutlet weak var company: UILabel!
+    @IBOutlet weak var website: UILabel!
+    @IBOutlet weak var deal: UILabel!
+    @IBOutlet weak var dealDates: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
