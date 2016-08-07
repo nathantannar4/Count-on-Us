@@ -64,7 +64,9 @@ class ScheduleViewController: UIViewController {
                 if results != nil {
                     for result in results! {
                         let eventDate = result["start"] as? NSDate
-                        if (result["confirmed"] as! [PFUser]).contains(PFUser.currentUser()!) {
+                        if (result["confirmed"] as! [PFUser])
+                            .map({user in user.objectId!})
+                            .contains(PFUser.currentUser()!.objectId!) {
                             self.AttendingArray.append(eventDate!)
                         } else {
                             let eventDate = result["start"] as? NSDate
