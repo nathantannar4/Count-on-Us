@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AEu-zK-pPl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AEu-zK-pPl">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -75,8 +75,22 @@
                     <view key="view" contentMode="scaleToFill" id="lqO-HC-VOH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="STV-fS-QWH">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="STV-fS-QWH" firstAttribute="top" secondItem="TuC-mI-Jab" secondAttribute="bottom" id="cgH-a2-LJK"/>
+                            <constraint firstItem="STV-fS-QWH" firstAttribute="leading" secondItem="lqO-HC-VOH" secondAttribute="leading" id="gA8-dj-LhY"/>
+                            <constraint firstAttribute="trailing" secondItem="STV-fS-QWH" secondAttribute="trailing" id="psV-FP-Bhy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="STV-fS-QWH" id="8OT-bT-1iL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iol-nz-gPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -125,8 +139,22 @@
                     <view key="view" contentMode="scaleToFill" id="mBz-Ws-AfR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="3rB-Qq-fTU">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3rB-Qq-fTU" firstAttribute="leading" secondItem="mBz-Ws-AfR" secondAttribute="leading" id="CwI-jH-oT9"/>
+                            <constraint firstAttribute="trailing" secondItem="3rB-Qq-fTU" secondAttribute="trailing" id="hgn-r5-3Em"/>
+                            <constraint firstItem="3rB-Qq-fTU" firstAttribute="top" secondItem="MBc-Wc-rMA" secondAttribute="bottom" id="zUm-b1-rWo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="3rB-Qq-fTU" id="9Bk-bu-1a0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mC-5Y-UmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,8 +216,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dKy-Jg-cbS" firstAttribute="leading" secondItem="Ftd-VI-x9t" secondAttribute="leading" id="MQz-cp-vTU"/>
-                            <constraint firstItem="dKy-Jg-cbS" firstAttribute="top" secondItem="Ooi-Ij-0xE" secondAttribute="bottom" id="lg4-6e-W5w"/>
                             <constraint firstAttribute="trailing" secondItem="dKy-Jg-cbS" secondAttribute="trailing" id="qux-Ll-8Yp"/>
+                            <constraint firstItem="dKy-Jg-cbS" firstAttribute="top" secondItem="Ooi-Ij-0xE" secondAttribute="bottom" id="th8-Zs-kLe"/>
                         </constraints>
                     </view>
                     <connections>
@@ -415,7 +443,7 @@
                                 <rect key="frame" x="0.0" y="22" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Cw-If-OOY" id="8cI-ii-BcO">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_blank.png" translatesAutoresizingMaskIntoConstraints="NO" id="Qor-Jm-ak8" customClass="PFImageView">
@@ -532,7 +560,7 @@
                                 <rect key="frame" x="0.0" y="130" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Unk-s6-6Bp" id="DVF-yY-dAk">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -570,7 +598,7 @@
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="18B-mT-h3h" id="j90-Zp-Vjf">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
