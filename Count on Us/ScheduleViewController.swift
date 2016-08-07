@@ -10,6 +10,7 @@ import UIKit
 import JTAppleCalendar
 import SwiftDate
 import RealmSwift
+import Parse
 
 class ScheduleViewController: UIViewController {
     
@@ -37,7 +38,7 @@ class ScheduleViewController: UIViewController {
         calendarView.cellInset = CGPoint(x: 0, y: 0)
         calendarView.firstDayOfWeek = .Monday
         calendarView.allowsMultipleSelection = true
-        
+        configure()
         
         
 //        AttendingArray.append(NSDate())
@@ -51,6 +52,30 @@ class ScheduleViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    
+    private func configure(){
+        let datesQuery = PFQuery(className: PF_EVENTS_CLASS_NAME)
+        datesQuery.whereKey("inviteTo", containedIn: [PFUser.currentUser()!])
+        datesQuery.findObjectsInBackgroundWithBlock({ (results: [PFObject]?, error: NSError?) in
+            if error == nil {
+                if results != nil {
+                    for result in results! {
+                        let eventDate = result["start"] as? NSDate
+                        if (result["confirmed"] as! [PFUser])
+                            .map({user in user.objectId!})
+                            .contains(PFUser.currentUser()!.objectId!) {
+                            self.AttendingArray.append(eventDate!)
+                        } else {
+                            let eventDate = result["start"] as? NSDate
+                            self.InvitedArray.append(eventDate!)
+                        }
+                    }
+                }
+            }
+        })
     }
 
 }
