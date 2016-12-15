@@ -1,6 +1,5 @@
-##Count On Us
-
-An iOS application built at the SAP 2016 Hackathon: Break the Build
+# Count on Us
+2016 SAP Hackathon 
 
 Video Demo:
 
